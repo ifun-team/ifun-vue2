@@ -1,0 +1,11 @@
+*.sh
+node_modules
+lib
+coverge
+*.md 
+*.scss
+*.woff
+*.ttf
+dist
+.eslintrc.cjs
+*.spec.js
