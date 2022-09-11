@@ -51,7 +51,7 @@ importers:
       vitest: 0.21.1_al62ui7gvcvyly64dffsg5obza
       vue-eslint-parser: 9.1.0_eslint@8.22.0
 
-  packages/docs:
+  packages/docs-vite:
     specifiers:
       vitepress: 0.22.4
       vitepress-theme-demoblock: 1.4.2

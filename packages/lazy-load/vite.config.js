@@ -4,11 +4,12 @@ import vue2 from "@vitejs/plugin-vue2";
 
 // rollup options
 const rollupOptions = {
-  external: ["vue", "ElementUI", "lodash-es"],
+  external: ["vue", "ElementUI", "lodashEs"],
   output: {
     globals: {
       vue: "Vue",
     },
+    extend: true,
   },
 };
 
@@ -23,10 +24,10 @@ const config = {
     sourcemap: true,
     outDir: "./dist",
     // brotliSize: true,
-    cssCodeSplit: true,
+    // cssCodeSplit: true,
 
     lib: {
-      entry: "./src/index.js",
+      entry: "./src/entry.js",
       name: "lazy-load",
       fileName: "lazy-load",
       // 导出

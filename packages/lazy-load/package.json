@@ -17,10 +17,17 @@
     "lazy-select"
   ],
   "author": "hboot",
-  "homepage": "http://hboot.fun/ifun-vue2#lazy-load",
+  "homepage": "https://github.com/ifun-team/ifun-vue2/tree/main/packages/lazy-load#readme",
   "repository": {
     "type": "git",
-    "url": ""
+    "url": "git+https://github.com/ifun-team/ifun-vue2/tree/main/packages/lazy-load"
   },
-  "license": "ISC"
+  "bugs": {
+    "url": "https://github.com/ifun-team/ifun-vue2/issues"
+  },
+  "license": "ISC",
+  "peerDependencies": {
+    "element-ui": "^2.15.9",
+    "lodash-es": "^4.17.21"
+  }
 }
