@@ -22,6 +22,7 @@
     "@commitlint/cli": "17.0.2",
     "@commitlint/config-conventional": "17.0.2",
     "@vitejs/plugin-vue2": "^1.1.2",
+    "@vitest/coverage-istanbul": "^0.23.2",
     "@vue/cli-plugin-eslint": "^5.0.8",
     "@vue/test-utils": "^2.0.2",
     "eslint": "8.22.0",
@@ -34,8 +35,6 @@
     "husky": "^8.0.1",
     "prettier": "^2.7.1",
     "terser": "5.4.0",
-    "vitepress": "0.22.4",
-    "vitepress-theme-demoblock": "1.4.2",
     "vitest": "0.21.1",
     "vue-eslint-parser": "^9.1.0"
   }

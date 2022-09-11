@@ -1,0 +1,26 @@
+{
+  "name": "@ifun-vue2/docs",
+  "version": "1.0.0",
+  "description": "ifun-vue2 对vue2 日常组件的封装",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "vitepress dev docs",
+    "build": "vitepress build docs",
+    "serve": "vitepress serve docs"
+  },
+  "keywords": [
+    "docs",
+    "ifun-vue2",
+    "ifun"
+  ],
+  "author": "hboot",
+  "license": "ISC",
+  "dependencies": {
+    "vue": "^3.2.0"
+  },
+  "devDependencies": {
+    "vitepress": "0.22.4",
+    "vitepress-theme-demoblock": "1.4.2"
+  }
+}
