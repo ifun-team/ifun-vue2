@@ -15,12 +15,23 @@ module.exports = {
   extends: [
     "eslint:recommended",
     "plugin:json/recommended",
-    "plugin:vue/recommended",
+    "plugin:vue/essential",
   ],
   plugins: [],
   parserOptions: {},
   rules: {
     "no-console": process.env.NODE_ENV === "production" ? "warn" : "off",
     "no-debugger": process.env.NODE_ENV === "production" ? "warn" : "off",
+    "vue/max-attributes-per-line": [
+      "error",
+      {
+        singleline: {
+          max: 3,
+        },
+        multiline: {
+          max: 1,
+        },
+      },
+    ],
   },
 };

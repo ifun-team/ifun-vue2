@@ -65,6 +65,9 @@ importers:
   packages/lazy-load:
     specifiers: {}
 
+  packages/seamless-scroll:
+    specifiers: {}
+
 packages:
 
   /@achrinza/node-ipc/9.2.5:
