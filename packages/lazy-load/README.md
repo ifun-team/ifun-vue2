@@ -1,13 +1,13 @@
 <br />
 
-<h1 align="center">LazyLoad</h1>
+<h1 align="center">IFunLazyLoad</h1>
 <p align='center'>
     <a href="https://github.com/ifun-team/ifun-vue2/tree/main/packages/lazy-load">
         <img src="https://img.shields.io/npm/v/@ifun-vue2/lazy-load" />
     </a>
-    <a href="https://github.com/ifun-team/ifun-vue2/tree/main/packages/lazy-load#license">
+    <!-- <a href="https://github.com/ifun-team/ifun-vue2/tree/main/packages/lazy-load#license">
         <img src="https://img.shields.io/npm/l/@ifun-vue2/lazy-load" />
-    </a>
+    </a> -->
 </p>
 <br />
 <p>数据懒加载，包含了自定指令`v-lazy-load`,通过指令结合`el-select`实现下拉数据的懒加载。</p>
@@ -22,10 +22,14 @@ npm i @ifun-vue2/lazy-load
 
 ```js
 import IFunLazyLoad from "@ifun-vue2/lazy-load";
+// 样式加载
+import "@ifun-vue2/lazy-load/dist/style.css";
 
 // 使用
 Vue.use(IFunLazyLoad);
 ```
+
+**组件完全支持所有的`el-select` 属性。比如`clearable`, 但是懒加载可能会对其他使用场景有一些限制，测试不能完全**
 
 ## `lazy-load` 基本使用
 
@@ -182,3 +186,5 @@ export default {
 | checked     |  初始值，默认选中回显  |                      非必须，string |
 | data        |       下拉数据源       |                         必传，Array |
 | selectProps | 下拉列表渲染的属性 key | 默认`{value:"value",label:"label"}` |
+
+其他`el-select` 支持的属性，事件。
