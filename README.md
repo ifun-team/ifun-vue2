@@ -4,4 +4,6 @@ vue2 日常业务组件封装
 
 ## Features
 
-- `v-lazy-load` 懒加载指令以及`lazy-select` 下拉懒加载数据组件
+- [lazy-load 数据懒加载](./packages/lazy-load/README.md)
+
+- [seamless-scroll 无缝滚动](./packages/seamless-scroll/README.md)
