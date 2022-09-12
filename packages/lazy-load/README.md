@@ -5,9 +5,9 @@
     <a href="https://github.com/ifun-team/ifun-vue2/tree/main/packages/lazy-load">
         <img src="https://img.shields.io/npm/v/@ifun-vue2/lazy-load" />
     </a>
-    <!-- <a href="https://github.com/ifun-team/ifun-vue2/tree/main/packages/lazy-load#license">
+    <a href="https://github.com/ifun-team/ifun-vue2/tree/main/packages/lazy-load#license">
         <img src="https://img.shields.io/npm/l/@ifun-vue2/lazy-load" />
-    </a> -->
+    </a>
 </p>
 <br />
 <p>数据懒加载，包含了自定指令`v-lazy-load`,通过指令结合`el-select`实现下拉数据的懒加载。</p>
@@ -18,7 +18,7 @@
 npm i @ifun-vue2/lazy-load
 ```
 
-组件包包含了一个指令`v-lazy-load` 以及一个`lazy-select` 下拉兰加载组件
+组件包包含了一个指令`v-lazy-load` 以及一个`lazy-select` 下拉懒加载组件
 
 ```js
 import IFunLazyLoad from "@ifun-vue2/lazy-load";

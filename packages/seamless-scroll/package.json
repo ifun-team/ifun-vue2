@@ -1,0 +1,36 @@
+{
+  "name": "@ifun-vue2/seamless-scroll",
+  "version": "1.0.0",
+  "description": "数据无缝滚动，数据量大时，开启虚拟滚动，提升页面性能.",
+  "main": "index.js",
+  "module": "./dist/seamless-scroll.esm.js",
+  "scripts": {
+    "test": "vitest",
+    "test:run": "vitest run",
+    "dev": "vite",
+    "build": "vite build"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "keywords": [
+    "seamless-scroll",
+    "scroll",
+    "ifun-vue2",
+    "ifun"
+  ],
+  "author": "hboot",
+  "homepage": "https://github.com/ifun-team/ifun-vue2/tree/main/packages/seamless-scroll#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ifun-team/ifun-vue2/tree/main/packages/seamless-scroll"
+  },
+  "bugs": {
+    "url": "https://github.com/ifun-team/ifun-vue2/issues"
+  },
+  "license": "ISC",
+  "peerDependencies": {
+    "element-ui": "^2.15.9",
+    "lodash-es": "^4.17.21"
+  }
+}
