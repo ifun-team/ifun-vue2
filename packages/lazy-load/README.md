@@ -179,6 +179,8 @@ export default {
 </script>
 ```
 
+`checked` 支持 select 的多选操作。字符串或者数组；选中默认值
+
 ## API 属性一览
 
 | props       |          说明          |                              默认值 |

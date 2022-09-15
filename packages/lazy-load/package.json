@@ -1,6 +1,6 @@
 {
   "name": "@ifun-vue2/lazy-load",
-  "version": "1.0.1",
+  "version": "1.1.0",
   "description": "数据懒加载,提供懒加载指令以及结合ElemenUI 实现selec滚动加载",
   "main": "index.js",
   "module": "./dist/lazy-load.esm.js",
