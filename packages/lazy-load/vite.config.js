@@ -40,6 +40,7 @@ const config = {
   test: {
     globals: true, // global API
     environment: "happy-dom", // 模拟真实DOM
+    alias: [{ find: /^vue$/, replacement: "vue/dist/vue.runtime.common.js" }],
     transformMode: {
       web: [/.[tj]sx$/], // 支持jsx语法
     },

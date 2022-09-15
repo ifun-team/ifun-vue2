@@ -1,79 +1,89 @@
-// import LazySelect from "../lazy-select.vue";
+import LazySelect from "../lazy-select.vue";
+import VLazyLoad from "../../vLazyLoad.js";
+import { nextTick } from "vue";
+import ElementUI, { Select, Option } from "element-ui";
 
-// import { mount } from "@vue/test-utils";
+import { mount, createLocalVue } from "@vue/test-utils";
 import { describe, expect, test } from "vitest";
 
-// const _mount = (template, data, otherObj) =>
-//   mount(
-//     {
-//       components: {
-//         "lazy-select": LazySelect,
-//       },
-//       template,
-//       data,
-//       ...otherObj,
-//     },
-//     {
-//       attachTo: "body",
-//     }
-//   );
+// Vue
+const Vue = createLocalVue();
+Vue.use(ElementUI);
+Vue.directive("lazy-load", VLazyLoad);
 
 describe("LazySelect", () => {
-  const findInnerInput = () => wrapper.find(".el-input__inner").element;
   // 1. 验证创建
-  // test("create", async () => {
-  //   wrapper = _mount(
-  //     `<IFun-lazy-load v-model="value"></IFun-lazy-load>`,
-  //     () => ({
-  //       value: "",
-  //     })
-  //   );
-  //   expect(wrapper.classes()).toContain("ifun-lazy-select");
-  //   // 测试渲染的el-select
-  //   const select = wrapper.findComponent({ name: "ElSelect" });
-  //   await select.trigger("click");
-  //   await nextTick();
-  //   expect(select.vm.visible).toBe(true);
-  // });
-  // // 2. 验证数据渲染
-  // test("create", async () => {
-  //   wrapper = _mount(`<IFun-lazy-load :data="data"></IFun-lazy-load>`, () => ({
-  //     data: [
-  //       {
-  //         value: "001",
-  //         label: "测试数据",
-  //       },
-  //     ],
-  //   }));
-  //   const optionsArr = wrapper.findComponent({ name: "ElOption" });
-
-  //   expect(optionsArr.length).toBe(1);
-  // });
-  // // 3. 验证默认值
-  // test("default value", async () => {
-  //   wrapper = _mount(
-  //     `
-  //     <IFun-lazy-load v-model="value"></IFun-lazy-load>
-  //   `,
-  //     () => ({
-  //       options: [
-  //         {
-  //           value: "1",
-  //           label: "admin",
-  //         },
-  //         {
-  //           value: "2",
-  //           label: "test",
-  //         },
-  //       ],
-  //       value: "1",
-  //     })
-  //   );
-  //   await nextTick();
-
-  //   expect(findInnerInput().value).toBe("admin");
-  // });
   test("create", async () => {
-    expect(true).toBe(true);
+    let wrapper = mount(LazySelect, {
+      propsData: {
+        value: "",
+        data: [
+          {
+            value: "001",
+            label: "测试数据1",
+          },
+          {
+            value: "002",
+            label: "测试数据2",
+          },
+        ],
+      },
+      localVue: Vue,
+    });
+    expect(wrapper.is(LazySelect)).toBe(true);
+    expect(wrapper.classes()).toContain("ifun-lazy-select");
+    // 测试渲染的el-select
+    const select = wrapper.findComponent(Select);
+    expect(select.exists()).toBe(true);
+    await select.vm.toggleMenu();
+    expect(select.vm.visible).toBe(true);
+    // el-options
+    expect(wrapper.findComponent(Option).exists()).toBe(true);
+  });
+  // 2. 验证数据渲染
+  test("el-optioin", async () => {
+    let wrapper = mount(LazySelect, {
+      propsData: {
+        value: "",
+        data: [
+          {
+            value: "001",
+            label: "测试数据1",
+          },
+          {
+            value: "002",
+            label: "测试数据2",
+          },
+        ],
+      },
+      localVue: Vue,
+    });
+
+    const options = wrapper.findAllComponents(Option);
+    // 渲染的元素
+    expect(options).toHaveLength(2);
+  });
+  // // 3. 验证默认值
+  test("default value", async () => {
+    let wrapper = mount(LazySelect, {
+      propsData: {
+        value: "001",
+        checked: "001",
+        data: [
+          {
+            value: "001",
+            label: "测试数据1",
+          },
+          {
+            value: "002",
+            label: "测试数据2",
+          },
+        ],
+      },
+      localVue: Vue,
+    });
+    // await nextTick();
+    const select = wrapper.findComponent(Select);
+    expect(select.props().value).toBe("001");
   });
 });
