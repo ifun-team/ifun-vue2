@@ -110,23 +110,23 @@ export default {
     },
   },
   watch: {
-    data(newData) {
-      this.copyData = [...newData];
-      this.init();
+    data: {
+      immediate: true,
+      deep: true,
+      handler(newData) {
+        this.copyData = [...newData];
+        this.init();
+      },
     },
     translateY() {
       this.handleDataScorll();
     },
   },
   mounted() {
-    // 复制数据，数据仓
-    this.copyData = [...this.data];
     // 当前可视窗口尺寸
     const { width, height } = this.$refs.scroll.getBoundingClientRect();
     this.width = width;
     this.height = height;
-    // 切割数据
-    this.init();
   },
   methods: {
     handleClickItem(info) {
