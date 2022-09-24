@@ -1,0 +1,37 @@
+{
+  "name": "@ifun-vue2/table",
+  "version": "1.0.0",
+  "description": "数据列表展示、封装了el-table以及el-pagination包含了分页，支持JSX语法",
+  "main": "index.js",
+  "module": "./dist/table.esm.js",
+  "scripts": {
+    "test": "vitest",
+    "test:run": "vitest run",
+    "dev": "vite",
+    "build": "vite build"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "keywords": [
+    "ifun-table",
+    "table",
+    "pagination",
+    "ifun-vue2",
+    "ifun"
+  ],
+  "author": "hboot",
+  "homepage": "https://github.com/ifun-team/ifun-vue2/tree/main/packages/table#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ifun-team/ifun-vue2/tree/main/packages/table"
+  },
+  "bugs": {
+    "url": "https://github.com/ifun-team/ifun-vue2/issues"
+  },
+  "license": "MIT",
+  "peerDependencies": {
+    "element-ui": "^2.15.9",
+    "lodash-es": "^4.17.21"
+  }
+}

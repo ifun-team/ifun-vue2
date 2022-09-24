@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link href="../../dist/style.css" rel="stylesheet" />
+  </head>
+  <body>
+    <h1>Demo,IFun-Vue2</h1>
+    <div id="app"></div>
+    <script type="module">
+      import App from "vue/dist/vue.esm.js";
+      import IFunTable from "../dist/table.esm.js";
+      import "../dist/style.css";
+      import ElementUI from 'element-ui'
+      import "element-ui/lib/theme-chalk/index.css";
+
+      App.use(IFunTable);
+      App.use(ElementUI)
+      new App({
+        data() {
+          return {
+            tableOptions: {
+              data: [],
+              columns: [ ],
+            },
+            pageOptions: {
+              total: 100,
+              pageSize: 10,
+              pageNum: 1,
+              background: true,
+              layout: "total,sizes, prev, pager, next, jumper",
+            },
+          };
+        },
+        mounted() {
+          this.tableOptions.columns = [
+            {
+              prop: "id",
+              label: "id",
+            },
+            {
+              prop: "name",
+              label: "名称",
+            },
+            {
+              prop: "address",
+              label: "地址",
+            },
+          ];
+          this.tableOptions.data = new Array(20).fill(0).map((item, index) => ({
+            id: index,
+            name: "数据" + index,
+            address: "北京朝阳大妈跳舞广场",
+          }));
+        },
+        render(h) {
+          return h("IFunTable", {
+            props: {
+              tableOptions: this.tableOptions,
+              pageOptions: this.pageOptions,
+            },
+          });
+        },
+      }).$mount("#app");
+    </script>
+  </body>
+</html>
