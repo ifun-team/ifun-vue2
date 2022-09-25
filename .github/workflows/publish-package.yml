@@ -1,15 +1,16 @@
 name: Publish Package
-on: [push]
+on:
+  push:
+    branches: [main]
 jobs:
   # install 测试环境
   check-package-change:
     runs-on: ubuntu-latest
     steps:
-      - name: checkout code
       - uses: actions/checkout@v3
       - uses: actions/setup-node@v3
         with:
-          node-version: "16"
+          node-version: 16
       - uses: pnpm/action-setup@v2.1.0
         with:
           version: 7.2.1
@@ -20,6 +21,3 @@ jobs:
         with:
           token: ${{ secrets.NPM_AUTH_TOKEN }}
           package: ./packages/lazy-load/package.json
-      - if: steps.publish.outputs.type != 'none'
-        run: |
-          echo "Version changed: ${{ steps.publish.outputs.old-version }} => ${{ steps.publish.outputs.version }}"

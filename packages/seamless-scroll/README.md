@@ -9,6 +9,9 @@
         <img src="https://img.shields.io/npm/l/@ifun-vue2/seamless-scroll" />
     </a>
 </p>
+<a href="https://github.com/ifun-team/ifun-vue2/actions/workflows/main.yml">
+        <img src="https://github.com/ifun-team/ifun-vue2/actions/workflows/main.yml/badge.svg" />
+    </a>
 <br />
 <p>数据无缝滚动，数据量大时，开启虚拟滚动，提升页面性能.</p>
 

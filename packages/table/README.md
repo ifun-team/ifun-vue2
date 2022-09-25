@@ -9,6 +9,9 @@
         <img src="https://img.shields.io/npm/l/@ifun-vue2/table" />
     </a>
 </p>
+<a href="https://github.com/ifun-team/ifun-vue2/actions/workflows/main.yml">
+        <img src="https://github.com/ifun-team/ifun-vue2/actions/workflows/main.yml/badge.svg" />
+    </a>
 <br />
 <p>自定义封装el-table、el-pagination，实现json方式配置表格。包括自定义列项内容、表头嵌套。支持所有el-table、el-pagination各自的属性配置</p>
 

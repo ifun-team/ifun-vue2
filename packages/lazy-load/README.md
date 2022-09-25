@@ -9,6 +9,10 @@
         <img src="https://img.shields.io/npm/l/@ifun-vue2/lazy-load" />
     </a>
 </p>
+<a href="https://github.com/ifun-team/ifun-vue2/actions/workflows/main.yml">
+        <img src="https://github.com/ifun-team/ifun-vue2/actions/workflows/main.yml/badge.svg" />
+    </a>
+
 <br />
 <p>数据懒加载，包含了自定指令`v-lazy-load`,通过指令结合`el-select`实现下拉数据的懒加载。</p>
 
