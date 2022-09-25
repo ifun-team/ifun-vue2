@@ -15,9 +15,9 @@ jobs:
         with:
           version: 7.2.1
       - name: install dependencies
-      - run: pnpm install
+        run: pnpm install
       - name: publish - lazy-load
-      - uses: JS-DevTools/npm-publish@v1
+        uses: JS-DevTools/npm-publish@v1
         with:
           token: ${{ secrets.NPM_AUTH_TOKEN }}
           package: ./packages/lazy-load/package.json
