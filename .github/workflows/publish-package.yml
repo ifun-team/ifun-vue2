@@ -21,9 +21,9 @@ jobs:
     needs: check-package-change
     steps:
       - name: Install dependencies
-        run: cd ./packages/lazy-load && pnpm install
+        run: cd packages/lazy-load && pnpm install
       - name: build
-        run: cd ./packages/lazy-load && pnpm build
+        run: cd packages/lazy-load && pnpm build
       - name: publish
         uses: JS-DevTools/npm-publish@v1
         with:
@@ -34,9 +34,9 @@ jobs:
     needs: check-package-change
     steps:
       - name: Install dependencies
-        run: cd ./packages/seamless-scroll && pnpm install
+        run: cd packages/seamless-scroll && pnpm install
       - name: build
-        run: cd ./packages/seamless-scroll && pnpm build
+        run: cd packages/seamless-scroll && pnpm build
       - name: publish
         uses: JS-DevTools/npm-publish@v1
         with:
@@ -47,9 +47,9 @@ jobs:
     needs: check-package-change
     steps:
       - name: Install dependencies
-        run: cd ./packages/table && pnpm install
+        run: cd packages/table && pnpm install
       - name: build
-        run: cd ./packages/table && pnpm build
+        run: cd packages/table && pnpm build
       - name: publish
         uses: JS-DevTools/npm-publish@v1
         with:
