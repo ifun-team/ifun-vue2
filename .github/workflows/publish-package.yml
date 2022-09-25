@@ -18,24 +18,27 @@ jobs:
         run: pnpm install
       # 怎么依赖上一个job的环境，
       # lazy-load
-      - name: publish-layz-load
+      - name: publish-layz-load install
         run: cd packages/lazy-load && pnpm install
+      - name: publish-layz-load build
         run: cd packages/lazy-load && pnpm build
       - uses: JS-DevTools/npm-publish@v1
         with:
           token: ${{ secrets.NPM_AUTH_TOKEN }}
           package: ./packages/lazy-load/package.json
       # seamless-scroll
-      - name: publish-seamless-scroll
+      - name: publish-seamless-scroll install
         run: cd packages/seamless-scroll && pnpm install
+      - name: publish-seamless-scroll build
         run: cd packages/seamless-scroll && pnpm build
       - uses: JS-DevTools/npm-publish@v1
         with:
           token: ${{ secrets.NPM_AUTH_TOKEN }}
           package: ./packages/seamless-scroll/package.json
       # table
-      - name:  publish-table
+      - name: publish-table install
         run: cd packages/table && pnpm install
+      - name: publish-table build
         run: cd packages/table && pnpm build
       - uses: JS-DevTools/npm-publish@v1
         with:
