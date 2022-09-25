@@ -16,42 +16,28 @@ jobs:
           version: 7.2.1
       - name: install dependencies
         run: pnpm install
-  publish-layz-load:
-    runs-on: ubuntu-latest
-    needs: check-package-change
-    steps:
-      - name: Install dependencies
+      # 怎么依赖上一个job的环境，
+      # lazy-load
+      - name: publish-layz-load
         run: cd packages/lazy-load && pnpm install
-      - name: build
         run: cd packages/lazy-load && pnpm build
-      - name: publish
-        uses: JS-DevTools/npm-publish@v1
+      - uses: JS-DevTools/npm-publish@v1
         with:
           token: ${{ secrets.NPM_AUTH_TOKEN }}
           package: ./packages/lazy-load/package.json
-  publish-seamless-scroll:
-    runs-on: ubuntu-latest
-    needs: check-package-change
-    steps:
-      - name: Install dependencies
+      # seamless-scroll
+      - name: publish-seamless-scroll
         run: cd packages/seamless-scroll && pnpm install
-      - name: build
         run: cd packages/seamless-scroll && pnpm build
-      - name: publish
-        uses: JS-DevTools/npm-publish@v1
+      - uses: JS-DevTools/npm-publish@v1
         with:
           token: ${{ secrets.NPM_AUTH_TOKEN }}
           package: ./packages/seamless-scroll/package.json
-  publish-table:
-    runs-on: ubuntu-latest
-    needs: check-package-change
-    steps:
-      - name: Install dependencies
+      # table
+      - name:  publish-table
         run: cd packages/table && pnpm install
-      - name: build
         run: cd packages/table && pnpm build
-      - name: publish
-        uses: JS-DevTools/npm-publish@v1
+      - uses: JS-DevTools/npm-publish@v1
         with:
           token: ${{ secrets.NPM_AUTH_TOKEN }}
           package: ./packages/table/package.json
