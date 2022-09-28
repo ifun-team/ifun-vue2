@@ -114,6 +114,8 @@ export default {
       immediate: true,
       deep: true,
       handler(newData) {
+        this.preData = [];
+        this.nextData = [];
         this.copyData = [...newData];
         this.init();
       },
