@@ -2,7 +2,7 @@
  * 定义懒加载数据列表的指令
  * 可通过滚动懒加载来减少一次性渲染大量数据的性能卡顿
  */
-import { throttle } from "lodash-es";
+import { throttle } from "@ifun-vue2/utils";
 
 export default {
   /**

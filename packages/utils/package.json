@@ -1,0 +1,30 @@
+{
+  "name": "@ifun-vue2/utils",
+  "version": "1.0.0",
+  "description": "ifun-ui 工具类自定义函数",
+  "main": "./src/index.js",
+  "module": "./dist/utils.esm.js",
+  "scripts": {
+    "test": "vitest",
+    "test:run": "vitest run",
+    "dev": "vite",
+    "build": "vite build"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "keywords": [
+    "utils",
+    "ifun-vue2"
+  ],
+  "author": "hboot",
+  "homepage": "https://github.com/ifun-team/ifun-vue2/tree/main/packages/utils#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ifun-team/ifun-vue2/tree/main/packages/utils"
+  },
+  "bugs": {
+    "url": "https://github.com/ifun-team/ifun-vue2/issues"
+  },
+  "license": "MIT"
+}

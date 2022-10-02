@@ -1,10 +1,8 @@
 import { defineConfig } from "vite";
-// vue
-import vue2 from "@vitejs/plugin-vue2";
 
 // rollup options
 const rollupOptions = {
-  external: ["vue", "ElementUI"],
+  external: [],
   output: {
     globals: {
       vue: "Vue",
@@ -16,20 +14,19 @@ const rollupOptions = {
 // config vite
 
 const config = {
-  plugins: [vue2()],
   // 库模式，编译打包
   build: {
     rollupOptions,
     minify: "terser",
-    sourcemap: false,
+    sourcemap: true,
     outDir: "./dist",
     // brotliSize: true,
     // cssCodeSplit: true,
 
     lib: {
-      entry: "./src/entry.js",
-      name: "seamless-scroll",
-      fileName: "seamless-scroll",
+      entry: "./src/index.js",
+      name: "utils",
+      fileName: "utils",
       // 导出
       // 增加了umd，iife 会报错 it's recommanded to set `build.cssCodeSplit` to true.
       // formats: ["esm", "umd", "iife"],
@@ -40,6 +37,7 @@ const config = {
   test: {
     globals: true, // global API
     environment: "happy-dom", // 模拟真实DOM
+    alias: [{ find: /^vue$/, replacement: "vue/dist/vue.runtime.common.js" }],
     transformMode: {
       web: [/.[tj]sx$/], // 支持jsx语法
     },

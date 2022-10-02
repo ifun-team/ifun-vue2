@@ -31,7 +31,6 @@
   },
   "license": "MIT",
   "peerDependencies": {
-    "element-ui": "^2.15.9",
-    "lodash-es": "^4.17.21"
+    "element-ui": "^2.15.9"
   }
 }

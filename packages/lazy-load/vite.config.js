@@ -4,7 +4,7 @@ import vue2 from "@vitejs/plugin-vue2";
 
 // rollup options
 const rollupOptions = {
-  external: ["vue", "ElementUI", "lodashEs"],
+  external: ["vue", "ElementUI"],
   output: {
     globals: {
       vue: "Vue",
