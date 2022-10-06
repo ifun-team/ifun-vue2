@@ -1,6 +1,5 @@
 import LazySelect from "../lazy-select.vue";
 import VLazyLoad from "../../vLazyLoad.js";
-import { throttle } from "@ifun-vue2/utils";
 import ElementUI, { Select, Option } from "element-ui";
 
 import { mount, createLocalVue } from "@vue/test-utils";

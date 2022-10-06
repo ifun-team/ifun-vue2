@@ -1,5 +1,6 @@
 <template>
   <div class="app">
+    <h2>IFun-lazy-select</h2>
     <IFunLazySelect v-model="value" :checked="value" :data="data" />
     <br />
     <IFunLazySelect
@@ -8,6 +9,8 @@
       :checked="valArr"
       :data="data"
     />
+    <h2>IFun-lazy-list</h2>
+    <IFunLazyList style="height: 150px" :data="data" />
   </div>
 </template>
 <script>
