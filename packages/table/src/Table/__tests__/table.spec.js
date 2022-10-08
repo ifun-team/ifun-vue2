@@ -9,7 +9,7 @@ const Vue = createLocalVue();
 Vue.use(ElementUI);
 
 //
-describe("seamless-scroll", () => {
+describe("table", () => {
   let data = new Array(100).fill(0).map((key, index) => ({
     value: index,
     label: "测试数据" + index,

@@ -16,6 +16,11 @@ jobs:
           version: 7.2.1
       - name: install dependencies
         run: pnpm install
+      # 优先编译完工具包
+      - name: utils install
+        run: cd packages/utils && pnpm install
+      - name: utils build
+        run: cd packages/utils && pnpm build
       # 怎么依赖上一个job的环境，
       # lazy-load
       - name: publish-layz-load install

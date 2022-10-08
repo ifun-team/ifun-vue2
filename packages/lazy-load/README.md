@@ -22,7 +22,11 @@
 npm i @ifun-vue2/lazy-load
 ```
 
-组件包包含了一个指令`v-lazy-load` 以及一个`lazy-select` 下拉懒加载组件
+组件包包含
+
+- 一个指令`v-lazy-load`
+- 一个`lazy-select` 下拉懒加载组件，可结合`el-form`表单校验
+- 一个`lazy-list` 下来滚动列表组件。
 
 ```js
 import IFunLazyLoad from "@ifun-vue2/lazy-load";
@@ -35,7 +39,7 @@ Vue.use(IFunLazyLoad);
 
 **组件完全支持所有的`el-select` 属性。比如`clearable`, 但是懒加载可能会对其他使用场景有一些限制，测试不能完全**
 
-## `lazy-load` 基本使用
+## `lazy-select` 基本使用
 
 通过传入`data`, 数据类型为数组。
 
@@ -184,6 +188,34 @@ export default {
 ```
 
 `checked` 支持 select 的多选操作。字符串或者数组；选中默认值
+
+## `lazy-list` 基本使用
+
+通过传入`data`, 数据类型为数组。
+
+```vue
+<template>
+  <div style="margin-bottom:20px;height:150px;">
+    <IFunLazyList :data="data" />
+  </div>
+</template>
+
+<script>
+export default {
+  data() {
+    return {
+      data: [],
+    };
+  },
+  mounted() {
+    this.data = new Array(100).fill(0).map((item, index) => ({
+      value: index,
+      label: "数据" + index,
+    }));
+  },
+};
+</script>
+```
 
 ## API 属性一览
 
