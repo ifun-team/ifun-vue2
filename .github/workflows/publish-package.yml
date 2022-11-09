@@ -21,6 +21,10 @@ jobs:
         run: cd packages/utils && pnpm install
       - name: utils build
         run: cd packages/utils && pnpm build
+      - uses: JS-DevTools/npm-publish@v1
+        with:
+          token: ${{ secrets.NPM_AUTH_TOKEN }}
+          package: ./packages/utils/package.json
       # 怎么依赖上一个job的环境，
       # lazy-load
       - name: publish-layz-load install

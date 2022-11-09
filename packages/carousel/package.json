@@ -1,0 +1,31 @@
+{
+  "name": "@ifun-vue2/carousel",
+  "version": "1.0.0",
+  "description": "轮播",
+  "main": "index.js",
+  "module": "./dist/carousel.esm.js",
+  "scripts": {
+    "test": "vitest",
+    "test:run": "vitest run",
+    "dev": "vite",
+    "build": "vite build"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "keywords": [
+    "carousel",
+    "ifun",
+    "ifun-vue2"
+  ],
+  "author": "hboot",
+  "homepage": "https://github.com/ifun-team/ifun-vue2/tree/main/packages/carousel#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ifun-team/ifun-vue2/tree/main/packages/carousel"
+  },
+  "bugs": {
+    "url": "https://github.com/ifun-team/ifun-vue2/issues"
+  },
+  "license": "MIT"
+}

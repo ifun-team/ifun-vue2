@@ -21,7 +21,7 @@
           </slot>
         </li>
       </ul>
-      <ul class="next-data">
+      <ul class="next-data" v-if="scroll">
         <li
           v-for="item in nextData"
           :key="item[scrollOptions.value]"
@@ -58,7 +58,13 @@ export default {
         return [];
       },
     },
+    // 是否为虚拟列表
     virtual: Boolean,
+    // 是否需要滚动
+    scroll: {
+      type: Boolean,
+      default: true,
+    },
     speed: {
       type: Number,
       default: () => 1,
@@ -145,6 +151,9 @@ export default {
       }
     },
     move() {
+      if (!this.scroll) {
+        return;
+      }
       this.stop();
       this.animationFrame = requestAnimationFrame(() => {
         if (this.total > 0) {

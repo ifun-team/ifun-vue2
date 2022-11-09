@@ -151,6 +151,46 @@ export default {
 </script>
 ```
 
+## `scroll`关闭滚动
+
+通过传入`scroll:false`, 标识不需要滚动。这种场景在于数据量少于滚动区域时，滚动反而没有任何意义。
+
+此时可以通过定义 `:scroll="data.length>5"` 展示所有的数据。这完全取决于你的主观判断；
+
+> 当然你也可以在数据量多是关闭自动滚动，此时你可以设置跟元素`overflow:auto` 手动滚动。
+
+```vue
+<template>
+  <div style="margin-bottom:20px;height:300px;">
+    <IFunSeamlessScroll
+      :data="data"
+      :scroll="data.length > 5"
+      :options="options"
+    />
+  </div>
+</template>
+
+<script>
+export default {
+  data() {
+    return {
+      data: [],
+      options: {
+        // 定义size
+        pageSize: 20,
+      },
+    };
+  },
+  mounted() {
+    this.data = new Array(100).fill(0).map((item, index) => ({
+      value: index,
+      label: "数据" + index,
+    }));
+  },
+};
+</script>
+```
+
 ## slot
 
 - 提供两个 slot 定义内容区域。没有数据时，为空时，可通过`empty` slot 定义数据空展示状态。
