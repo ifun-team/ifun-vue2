@@ -14,12 +14,16 @@ new Vue({
       value: index,
       label: "数据" + index,
     }));
+    setTimeout(() => {
+      this.data = this.data.slice(0, 4);
+    }, 5000);
   },
   render(h) {
     return h("IFunSeamlessScroll", {
       props: {
         data: this.data,
         virtual: true,
+        scroll: this.data.length > 10,
         options: {
           pageSize: 20,
         },

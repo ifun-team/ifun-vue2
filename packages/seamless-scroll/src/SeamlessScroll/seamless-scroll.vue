@@ -123,6 +123,7 @@ export default {
         this.preData = [];
         this.nextData = [];
         this.copyData = [...newData];
+        this.translateY = 0;
         this.init();
       },
     },
