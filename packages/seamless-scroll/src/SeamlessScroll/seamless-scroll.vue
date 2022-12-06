@@ -88,6 +88,10 @@ export default {
       // 容器宽度、高度
       width: 0,
       height: 0,
+      scrollOptions:{
+        ...defaultOptions
+      },
+      total:0
     };
   },
   computed: {
@@ -102,17 +106,9 @@ export default {
         height: `${itemWidth}px`,
       };
     },
-    total() {
-      return this.data.length;
-    },
     // 视口实际可看到的数据数量
     realCount() {
       return Math.round(this.height / this.scrollOptions.itemWidth);
-    },
-    scrollOptions() {
-      let opt = Object.assign({}, defaultOptions, this.options);
-
-      return opt;
     },
   },
   watch: {
@@ -124,6 +120,7 @@ export default {
         this.nextData = [];
         this.copyData = [...newData];
         this.translateY = 0;
+        this.total = this.copyData.length;
         this.init();
       },
     },
@@ -142,7 +139,8 @@ export default {
       this.$emit("click", info);
     },
     init() {
-      
+      this.scrollOptions = Object.assign({}, defaultOptions, this.options);
+
       if (!this.virtual || this.scrollOptions.pageSize>this.total) {
         // 非虚拟列表管滚动，则直接展示所有数据
         this.scrollOptions.pageSize = this.total;
