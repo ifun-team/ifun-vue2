@@ -142,7 +142,8 @@ export default {
       this.$emit("click", info);
     },
     init() {
-      if (!this.virtual) {
+      
+      if (!this.virtual || this.scrollOptions.pageSize>this.total) {
         // 非虚拟列表管滚动，则直接展示所有数据
         this.scrollOptions.pageSize = this.total;
       }
@@ -176,6 +177,9 @@ export default {
       this.preData = this.copyData.splice(0, this.scrollOptions.pageSize);
       // next
       this.nextData = this.copyData.slice(0, this.scrollOptions.pageSize);
+      if(this.nextData.length<1){
+        this.nextData = [...this.preData]
+      }
     },
     /**
      * 监听滚动的距离

@@ -10,13 +10,13 @@ new Vue({
     };
   },
   mounted() {
-    this.data = new Array(100).fill(0).map((item, index) => ({
+    this.data = new Array(15).fill(0).map((item, index) => ({
       value: index,
       label: "数据" + index,
     }));
-    setTimeout(() => {
-      this.data = this.data.slice(0, 4);
-    }, 5000);
+    // setTimeout(() => {
+    //   this.data = this.data.slice(0, 4);
+    // }, 5000);
   },
   render(h) {
     return h("IFunSeamlessScroll", {
