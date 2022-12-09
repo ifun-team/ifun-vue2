@@ -31,6 +31,13 @@ import "@ifun-vue2/seamless-scroll/dist/style.css";
 Vue.use(IFunSeamlessScroll);
 ```
 
+## 特点
+
+- 实现数据的无缝滚动（纵向）
+- 实现大数据量的虚拟无缝 滚动（大数据量优化）
+- 滚动内容自定义渲染
+- 滚动区域内，滚动可由鼠标控制滚动
+
 ## 基本使用，数据滚动
 
 通过传入`data`, 数据类型为数组。
@@ -159,6 +166,14 @@ export default {
 
 > 当然你也可以在数据量多是关闭自动滚动，此时你可以设置跟元素`overflow:auto` 手动滚动。
 
+## 鼠标滚动控制内容滚动
+
+滚动内容区放开了鼠标滚动；可对当前内容实现鼠标的滚轮滚动；
+
+不开启虚拟滚动时，没有任何问题；
+
+开启虚拟滚动，当向上滚动时，分批次数据仅滚动到内容区顶部，不会在进行循环渲染；向下滚动则没有问题；
+
 ```vue
 <template>
   <div style="margin-bottom:20px;height:300px;">
@@ -235,6 +250,8 @@ export default {
 };
 </script>
 ```
+
+##
 
 ## 重要 为了最佳的滚动效果查看，请定义`options.itemWidth` ;
 

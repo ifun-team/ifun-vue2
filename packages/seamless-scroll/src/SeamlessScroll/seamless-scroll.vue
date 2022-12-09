@@ -4,6 +4,7 @@
     class="ifun-seamless-scroll"
     @mouseenter="enter"
     @mouseleave="leave"
+    @mousewheel="handleScroll"
   >
     <slot name="empty">
       <p v-if="total === 0">暂无数据</p>
@@ -88,10 +89,8 @@ export default {
       // 容器宽度、高度
       width: 0,
       height: 0,
-      scrollOptions:{
-        ...defaultOptions
-      },
-      total:0
+      scrollOptions: {},
+      total: 0,
     };
   },
   computed: {
@@ -135,13 +134,28 @@ export default {
     this.height = height;
   },
   methods: {
+    /**
+     * 实现滚动
+     */
+    handleScroll(event) {
+      if (event.deltaY > 0) {
+        // 向下滚动
+        this.translateY -= 5;
+      } else {
+        if (this.translateY > 0) {
+          return;
+        }
+        this.translateY += 5;
+      }
+      //
+    },
     handleClickItem(info) {
       this.$emit("click", info);
     },
     init() {
       this.scrollOptions = Object.assign({}, defaultOptions, this.options);
 
-      if (!this.virtual || this.scrollOptions.pageSize>this.total) {
+      if (!this.virtual || this.scrollOptions.pageSize > this.total) {
         // 非虚拟列表管滚动，则直接展示所有数据
         this.scrollOptions.pageSize = this.total;
       }
@@ -175,8 +189,8 @@ export default {
       this.preData = this.copyData.splice(0, this.scrollOptions.pageSize);
       // next
       this.nextData = this.copyData.slice(0, this.scrollOptions.pageSize);
-      if(this.nextData.length<1){
-        this.nextData = [...this.preData]
+      if (this.nextData.length < 1) {
+        this.nextData = [...this.preData];
       }
     },
     /**
