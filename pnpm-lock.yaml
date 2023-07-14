@@ -67,9 +67,9 @@ importers:
 
   packages/lazy-load:
     specifiers:
-      '@ifun-vue2/utils': ^1.0.0
+      '@ifun-vue2/utils': 1.0.1
     dependencies:
-      '@ifun-vue2/utils': 1.0.0
+      '@ifun-vue2/utils': 1.0.1
 
   packages/seamless-scroll:
     specifiers: {}
@@ -549,8 +549,8 @@ packages:
     resolution: {integrity: sha512-ZnQMnLV4e7hDlUvw8H+U8ASL02SS2Gn6+9Ac3wGGLIe7+je2AeAOxPY+izIPJDfFDb7eDjev0Us8MO1iFRN8hA==}
     dev: true
 
-  /@ifun-vue2/utils/1.0.0:
-    resolution: {integrity: sha512-bRZSWeXV+dx2jWqbHv8qrc26/CG8fe8Esayh7+rvadyubExB1RDwD2BOEqde8tPc4BSM8fk2uI+P5eFxkNR16g==}
+  /@ifun-vue2/utils/1.0.1:
+    resolution: {integrity: sha512-FGbyeJBngg7KKrmMbdWrgre9oBGmSOkztkhkzy3C8MLcCHNoJtTLvaWH6eNeCuOFoBmYZDnrxDPEkNEe1Ji3Jg==}
     dev: false
 
   /@jridgewell/gen-mapping/0.3.2:
