@@ -8,7 +8,9 @@
         <el-table
           ref="table"
           :data="tableOptions.data"
-          :row-key="tableOptions.rowKey"
+          :row-key="
+            tableOptions.rowKey || $attrs['row-key'] || $attrs['rowKey']
+          "
           :border="border"
           v-on="$listeners"
           v-bind="$attrs"

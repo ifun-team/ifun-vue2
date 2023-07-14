@@ -24,3 +24,6 @@ __tests__
 
 # doc
 docs
+
+./vite.config.js
+./index.html

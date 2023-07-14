@@ -1,6 +1,6 @@
 import LazySelect from "../lazy-select.vue";
 import VLazyLoad from "../../vLazyLoad.js";
-import ElementUI, { Select, Option } from "element-ui";
+import ElementUI, { Select, Option, Input } from "element-ui";
 
 import { mount, createLocalVue } from "@vue/test-utils";
 import { describe, expect, test } from "vitest";
@@ -11,6 +11,10 @@ Vue.use(ElementUI);
 Vue.directive("lazy-load", VLazyLoad);
 
 describe("LazySelect", () => {
+  let data = new Array(100).fill(0).map((item, index) => ({
+    value: index + "",
+    label: "数据" + index,
+  }));
   // 1. 验证创建
   test("create", async () => {
     let wrapper = mount(LazySelect, {
@@ -40,7 +44,7 @@ describe("LazySelect", () => {
     expect(wrapper.findComponent(Option).exists()).toBe(true);
   });
   // 2. 验证数据渲染
-  test("el-optioin", async () => {
+  test("el-option", async () => {
     let wrapper = mount(LazySelect, {
       propsData: {
         value: "",
@@ -84,5 +88,47 @@ describe("LazySelect", () => {
     // await nextTick();
     const select = wrapper.findComponent(Select);
     expect(select.props().value).toBe("001");
+  });
+  // 4. 多选
+  test("multiple default value", async () => {
+    let wrapper = mount(LazySelect, {
+      propsData: {
+        value: ["10", "89"],
+        checked: ["10", "89"],
+        data: data,
+      },
+      localVue: Vue,
+    });
+    // await nextTick();
+    const select = wrapper.findComponent(Select);
+    expect(select.props().value).toStrictEqual(["10", "89"]);
+
+    await wrapper.vm.$nextTick(() => {
+      const options = wrapper.findAllComponents(Option);
+      let target = options.filter((item) => item.value == "89");
+      expect(target).toHaveLength(1);
+    });
+  });
+  // 5. 验证filter
+  test("filter value", async () => {
+    let wrapper = mount(LazySelect, {
+      propsData: {
+        value: "",
+        data: data,
+        filterable: true,
+      },
+      localVue: Vue,
+    });
+    // await nextTick();
+    const select = wrapper.findComponent(Select);
+    // select.vm.focus();
+    await select.vm.toggleMenu();
+    select.vm.selectedLabel = "9";
+    // select.vm.onInputChange();
+    await wrapper.vm.$nextTick(() => {
+      // 渲染的元素
+      const options = wrapper.findAllComponents(Option);
+      expect(options).toHaveLength(9);
+    });
   });
 });

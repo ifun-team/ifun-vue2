@@ -51,6 +51,9 @@ importers:
       terser: 5.4.0
       vue-eslint-parser: 9.1.0_eslint@8.22.0
 
+  packages/carousel:
+    specifiers: {}
+
   packages/docs-vite:
     specifiers:
       vitepress: 0.22.4
@@ -64,11 +67,17 @@ importers:
 
   packages/lazy-load:
     specifiers:
-      '@ifun-vue2/utils': workspace:^1.0.0
+      '@ifun-vue2/utils': ^1.0.0
     dependencies:
-      '@ifun-vue2/utils': link:../utils
+      '@ifun-vue2/utils': 1.0.0
 
   packages/seamless-scroll:
+    specifiers: {}
+
+  packages/table:
+    specifiers: {}
+
+  packages/utils:
     specifiers: {}
 
 packages:
@@ -539,6 +548,10 @@ packages:
   /@humanwhocodes/object-schema/1.2.1:
     resolution: {integrity: sha512-ZnQMnLV4e7hDlUvw8H+U8ASL02SS2Gn6+9Ac3wGGLIe7+je2AeAOxPY+izIPJDfFDb7eDjev0Us8MO1iFRN8hA==}
     dev: true
+
+  /@ifun-vue2/utils/1.0.0:
+    resolution: {integrity: sha512-bRZSWeXV+dx2jWqbHv8qrc26/CG8fe8Esayh7+rvadyubExB1RDwD2BOEqde8tPc4BSM8fk2uI+P5eFxkNR16g==}
+    dev: false
 
   /@jridgewell/gen-mapping/0.3.2:
     resolution: {integrity: sha512-mh65xKQAzI6iBcFzwv28KVWSmCkdRBWoOh+bYQGW3+6OZvbbN3TqMGo5hqYxQniRcH9F2VZIoJCm4pa3BPDK/A==}

@@ -5,6 +5,8 @@
       v-bind="$attrs"
       style="width: 100%"
       v-on="$listeners"
+      :filter-method="handleFilterData"
+      @visible-change="handleOptionVisible"
     >
       <el-option
         v-for="item in viewData"
@@ -63,7 +65,18 @@ export default {
           $this.$once("hook:beforeDestroy", () => fn());
         },
       },
+      // 默认展示数据源，保留props数据源
+      filterData: [],
     };
+  },
+  watch: {
+    data: {
+      deep: true,
+      immediate: true,
+      handler(data) {
+        this.filterData = [...data];
+      },
+    },
   },
   computed: {
     isMulti() {
@@ -73,7 +86,7 @@ export default {
      * 当前下拉展示的
      */
     viewData() {
-      let data = this.data.slice(0, this.size * this.page);
+      let data = this.filterData.slice(0, this.size * this.page);
       if (
         this.checked === "" ||
         this.checked === undefined ||
@@ -135,6 +148,22 @@ export default {
   },
   mounted() {},
   methods: {
+    handleOptionVisible(bool) {
+      if (!bool) {
+        this.handleFilterData("");
+      }
+      // 重新定义visible-change
+      this.$emit("visible-change", bool);
+    },
+    handleFilterData(str) {
+      if (str == "") {
+        this.filterData = this.data;
+        return;
+      }
+      this.filterData = this.data.filter((item) =>
+        item[this.selectProps.label].includes(str)
+      );
+    },
     loadData() {
       if (this.size * this.page >= this.data.length) {
         return;

@@ -1,3 +1,4 @@
 packages:
   # packages dir
-  - "packages/**"
+  - "packages/*"
+  - "!packages/utils"
