@@ -61,6 +61,11 @@ export default {
     },
     // 是否为虚拟列表
     virtual: Boolean,
+    // 滚轮支持 滚动
+    whellScroll: {
+      type: Boolean,
+      default: true,
+    },
     // 是否需要滚动
     scroll: {
       type: Boolean,
@@ -138,6 +143,9 @@ export default {
      * 实现滚动
      */
     handleScroll(event) {
+      if (!this.whellScroll) {
+        return;
+      }
       if (event.deltaY > 0) {
         // 向下滚动
         this.translateY -= 5;

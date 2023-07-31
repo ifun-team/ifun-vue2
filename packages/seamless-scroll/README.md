@@ -258,12 +258,14 @@ export default {
 
 ## API 属性一览
 
-| props   | 说明             | 默认值           |
-| ------- | ---------------- | ---------------- |
-| virtual | 是否开启虚拟滚动 | 默认 false       |
-| data    | 数据源           | 必传，Array      |
-| speed   | 滚动速度         | 默认 1           |
-| options | 滚动配置         | 详见下表 Options |
+| props       | 说明                 | 默认值           |
+| ----------- | -------------------- | ---------------- |
+| virtual     | 是否开启虚拟滚动     | 默认 false       |
+| data        | 数据源               | 必传，Array      |
+| speed       | 滚动速度             | 默认 1           |
+| options     | 滚动配置             | 详见下表 Options |
+| scroll      | 控制是否需要自动滚动 | 默认 true        |
+| whellScroll | 鼠标滚轮支持滚动     | 默认 true        |
 
 ## ScrollOptions
 
