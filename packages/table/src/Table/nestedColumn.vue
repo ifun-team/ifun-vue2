@@ -21,13 +21,16 @@
             :render="info.render"
             :scope="scope"
           />
-          <span v-else>{{ scope.row[info.prop] || "-" }}</span>
+          <span v-else>{{
+            isEmpty(scope.row[info.prop]) ? "-" : scope.row[info.prop]
+          }}</span>
         </template>
       </el-table-column>
     </template>
   </el-table-column>
 </template>
 <script>
+import { isEmpty } from "@/libs/isEmpty.js";
 import RenderColumn from "./renderColumn.vue";
 /**
  * 多层嵌套表格
@@ -43,6 +46,10 @@ export default {
       type: Object,
       default: () => {},
     },
+  },
+  data() {
+    this.isEmpty = isEmpty;
+    return {};
   },
   components: {
     RenderColumn,

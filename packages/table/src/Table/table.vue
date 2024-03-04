@@ -52,7 +52,9 @@
                   :render="item.render"
                   :scope="scope"
                 />
-                <span v-else>{{ scope.row[item.prop] || "-" }}</span>
+                <span v-else>{{
+                  isEmpty(scope.row[item.prop]) ? "-" : scope.row[item.prop]
+                }}</span>
               </template>
             </el-table-column>
           </template>
@@ -72,6 +74,7 @@
   </div>
 </template>
 <script>
+import { isEmpty } from "@/libs/isEmpty.js";
 import RenderColumn from "./renderColumn.vue";
 //
 import nestedColumn from "./nestedColumn.vue";
@@ -107,6 +110,7 @@ export default {
     nestedColumn,
   },
   data() {
+    this.isEmpty = isEmpty;
     return {};
   },
   methods: {

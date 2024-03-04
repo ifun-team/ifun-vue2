@@ -32,6 +32,21 @@ new Vue({
       {
         prop: "name",
         label: "名称",
+        nested: true,
+        columns: [
+          {
+            prop: "firstName",
+            label: "姓氏",
+          },
+          {
+            prop: "lastName",
+            label: "名",
+          },
+        ],
+      },
+      {
+        prop: "age",
+        label: "年龄",
       },
       {
         prop: "address",
@@ -40,7 +55,8 @@ new Vue({
     ];
     this.tableOptions.data = new Array(20).fill(0).map((item, index) => ({
       id: index,
-      name: "数据" + index,
+      age: null,
+      firstName: "数据" + index,
       address: "北京朝阳大妈跳舞广场",
     }));
   },

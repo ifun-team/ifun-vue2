@@ -77,9 +77,6 @@ importers:
   packages/table:
     specifiers: {}
 
-  packages/utils:
-    specifiers: {}
-
 packages:
 
   /@achrinza/node-ipc/9.2.5:

@@ -17,6 +17,11 @@ const rollupOptions = {
 
 const config = {
   plugins: [vue2()],
+  resolve: {
+    alias: {
+      "@": "./src",
+    },
+  },
   // 库模式，编译打包
   build: {
     rollupOptions,
