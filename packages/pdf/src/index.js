@@ -1,8 +1,8 @@
 import Vue from "vue";
-import IFunSeamlessScroll from "./entry";
+import IFunPdf from "./entry";
 
 import App from "./App.vue";
-Vue.use(IFunSeamlessScroll);
+Vue.use(IFunPdf);
 
 new Vue({
   render: (h) => h(App),

@@ -1,0 +1,34 @@
+{
+  "name": "@ifun-vue2/pdf",
+  "version": "0.1.0",
+  "description": "pdf文件预览.",
+  "main": "index.js",
+  "module": "./dist/pdf.esm.js",
+  "scripts": {
+    "test": "vitest",
+    "test:run": "vitest run",
+    "dev": "vite",
+    "build": "vite build"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "keywords": [
+    "pdf",
+    "ifun-vue2",
+    "ifun"
+  ],
+  "author": "hboot",
+  "homepage": "https://github.com/ifun-team/ifun-vue2/tree/main/packages/pdf#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ifun-team/ifun-vue2/tree/main/packages/pdf"
+  },
+  "bugs": {
+    "url": "https://github.com/ifun-team/ifun-vue2/issues"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "pdfjs-dist": "^4.3.136"
+  }
+}

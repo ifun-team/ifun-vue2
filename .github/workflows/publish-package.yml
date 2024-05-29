@@ -53,3 +53,12 @@ jobs:
         with:
           token: ${{ secrets.NPM_AUTH_TOKEN }}
           package: ./packages/table/package.json
+      # pdf
+      - name: publish-pdf install
+        run: cd packages/pdf && pnpm install
+      - name: publish-pdf build
+        run: cd packages/pdf && pnpm build
+      - uses: JS-DevTools/npm-publish@v1
+        with:
+          token: ${{ secrets.NPM_AUTH_TOKEN }}
+          package: ./packages/pdf/package.json
