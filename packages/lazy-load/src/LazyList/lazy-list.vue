@@ -37,7 +37,7 @@ export default {
     },
   },
   data() {
-    let $this = this;
+    const $this = this;
     return {
       // 用户下拉选择
       page: 1,
@@ -56,7 +56,7 @@ export default {
      * 当前下拉展示的
      */
     viewData() {
-      let data = this.data.slice(0, this.size * this.page);
+      const data = this.data.slice(0, this.size * this.page);
       return data;
     },
   },

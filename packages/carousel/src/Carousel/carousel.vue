@@ -20,7 +20,7 @@ export default {
     },
   },
   data() {
-    let $this = this;
+    // const $this = this;
     return {};
   },
   computed: {},

@@ -5,6 +5,6 @@ import Pdf from "./pdf/index.vue";
 export default {
   install(app) {
     // 组件
-    app.component("IFun" + Pdf.name, Pdf);
+    app.component(Pdf.name, Pdf);
   },
 };

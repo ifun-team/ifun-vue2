@@ -5,6 +5,7 @@
   "main": "index.js",
   "module": "./dist/pdf.esm.js",
   "scripts": {
+    "preinstall": "npx only-allow pnpm",
     "test": "vitest",
     "test:run": "vitest run",
     "dev": "vite",

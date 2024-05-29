@@ -35,7 +35,7 @@ export default {
     scrollContainer.addEventListener("scroll", scroll);
 
     // 回调时 返回事件销毁函数
-    let fn = () => {
+    const fn = () => {
       scrollContainer.removeEventListener("scroll", scroll);
     };
     callback(fn);

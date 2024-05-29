@@ -10,7 +10,7 @@ import pdfWork from "pdfjs-dist/legacy/build/pdf.worker.min.mjs?url";
 pdfjs.GlobalWorkerOptions.workerSrc = pdfWork;
 
 export default {
-  name: "Pdf",
+  name: "IFunPdf",
   props: {
     options: {
       type: Object,
@@ -52,7 +52,7 @@ export default {
         this.totalPages = doc.numPages;
         // 读取每一页
         for (let i = 0; i < this.totalPages; i++) {
-          let page = await doc.getPage(i + 1);
+          const page = await doc.getPage(i + 1);
 
           const viewport = page.getViewport({ scale: 1.0 });
           const canvas = document.createElement("canvas");
@@ -87,6 +87,7 @@ export default {
     width: 100%;
     height: 100%;
     overflow: auto;
+    text-align: center;
   }
 }
 </style>

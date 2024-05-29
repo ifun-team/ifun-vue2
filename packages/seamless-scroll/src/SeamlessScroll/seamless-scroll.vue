@@ -71,8 +71,8 @@ export default {
   },
   computed: {
     boxStyle() {
-      let x = 0,
-        y = 0;
+      let x = 0;
+      let y = 0;
       if (this.isHorizontal) {
         x = this.translate;
       } else {
@@ -83,7 +83,7 @@ export default {
       };
     },
     isHorizontal() {
-      return this.direction == "horizontal";
+      return this.direction === "horizontal";
     },
   },
   watch: {
@@ -120,8 +120,8 @@ export default {
         const { scrollHeight, scrollWidth } = this.$refs.box;
 
         if (
-          (scrollHeight == offsetHeight && !this.isHorizontal) ||
-          (scrollWidth == offsetWidth && this.isHorizontal)
+          (scrollHeight === offsetHeight && !this.isHorizontal) ||
+          (scrollWidth === offsetWidth && this.isHorizontal)
         ) {
           return;
         }

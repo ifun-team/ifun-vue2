@@ -25,3 +25,5 @@ jobs:
         run: cd packages/seamless-scroll && pnpm run test:run
       - name: Run Test - table
         run: cd packages/table && pnpm run test:run
+      - name: Run Test - pdf
+        run: cd packages/pdf && pnpm run test:run

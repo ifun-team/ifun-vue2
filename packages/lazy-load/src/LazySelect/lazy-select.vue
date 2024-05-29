@@ -51,7 +51,7 @@ export default {
     },
   },
   data() {
-    let $this = this;
+    const $this = this;
     return {
       // 用户下拉选择
       page: 1,
@@ -86,7 +86,7 @@ export default {
      * 当前下拉展示的
      */
     viewData() {
-      let data = this.filterData.slice(0, this.size * this.page);
+      const data = this.filterData.slice(0, this.size * this.page);
       if (
         this.checked === "" ||
         this.checked === undefined ||
@@ -97,10 +97,10 @@ export default {
       }
 
       // 标记已有的数据
-      let markValue = [];
+      const markValue = [];
       // 分割的数据是否有当前选中的数据
       let info = data.reduce((arr, item) => {
-        let value = item[this.selectProps.value];
+        const value = item[this.selectProps.value];
         let bool = false;
         // 多选
         if (this.isMulti) {
@@ -124,7 +124,7 @@ export default {
       }
       // 总数据中是否有选中的数据
       info = this.data.reduce((arr, item) => {
-        let value = item[this.selectProps.value];
+        const value = item[this.selectProps.value];
         if (markValue.includes(value)) {
           return arr;
         }
@@ -156,7 +156,7 @@ export default {
       this.$emit("visible-change", bool);
     },
     handleFilterData(str) {
-      if (str == "") {
+      if (str === "") {
         this.filterData = this.data;
         return;
       }

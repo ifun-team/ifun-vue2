@@ -12,11 +12,7 @@ module.exports = {
     __DEV__: true,
   },
   parser: "vue-eslint-parser",
-  extends: [
-    "eslint:recommended",
-    "plugin:json/recommended",
-    "plugin:vue/essential",
-  ],
+  extends: ["standard", "plugin:vue/essential", "prettier"],
   plugins: [],
   parserOptions: {},
   rules: {
