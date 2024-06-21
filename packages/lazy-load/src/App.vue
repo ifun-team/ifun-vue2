@@ -20,6 +20,21 @@
       :data="data"
       @visible-change="(bool) => (visible = bool)"
     />
+    <h3>
+      分页远程加载,<code>lazy</code>
+      分页加载时通过绑定加载函数<code>load</code>处理加载
+    </h3>
+    <IFunLazySelect
+      v-model="valFilter"
+      filterable
+      :data="data"
+      lazy
+      :load="handleLoadData"
+      @visible-change="(bool) => (visible = bool)"
+    />
+    <h2>IFun-lazy-list</h2>
+    <IFunLazyList style="height: 150px" :data="data" />
+
     <h2>IFun-lazy-list</h2>
     <IFunLazyList style="height: 150px" :data="data" />
   </div>
@@ -40,6 +55,27 @@ export default {
       value: index + "",
       label: "数据" + index,
     }));
+  },
+  methods: {
+    handleLoadData() {
+      // 继续加载数据
+      this.data.push(
+        ...[
+          {
+            value: 101 + "",
+            label: "数据" + 101,
+          },
+          {
+            value: 102 + "",
+            label: "数据" + 102,
+          },
+          {
+            value: 103 + "",
+            label: "数据" + 103,
+          },
+        ]
+      );
+    },
   },
 };
 </script>

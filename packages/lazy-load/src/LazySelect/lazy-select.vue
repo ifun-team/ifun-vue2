@@ -29,11 +29,6 @@ export default {
     checked: {
       type: [String, Array],
       default: "",
-      // validator(value) {
-      //   // 如果是多选则，绑定的值，必须是一个数组。
-      //   //
-      //   return this.$attrs.multiple && Array.isArray(value);
-      // },
     },
     // 所有的数据源
     data: {
@@ -48,6 +43,15 @@ export default {
         value: "value",
         label: "label",
       }),
+    },
+    // 是否进行远程加载
+    lazy: {
+      type: Boolean,
+      default: false,
+    },
+    // 分页查询时，调用外部函数
+    load: {
+      type: Function,
     },
   },
   data() {
@@ -86,6 +90,11 @@ export default {
      * 当前下拉展示的
      */
     viewData() {
+      if (this.lazy) {
+        // 源数据来源分页时，直接返回当前数据
+        // 分页查询的数据不能处理默认选中；如果选中数据在当前分页数据中
+        return this.filterData;
+      }
       const data = this.filterData.slice(0, this.size * this.page);
       if (
         this.checked === "" ||
@@ -165,6 +174,11 @@ export default {
       );
     },
     loadData() {
+      if (this.lazy) {
+        // 分页数据
+        this.load();
+        return;
+      }
       if (this.size * this.page >= this.data.length) {
         return;
       }

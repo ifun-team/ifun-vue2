@@ -189,6 +189,20 @@ export default {
 
 `checked` 支持 select 的多选操作。字符串或者数组；选中默认值
 
+## 通过`lazy`设置是否分页加载数据
+
+分页加载数据时，通过绑定外部加载函数`load`处理分页加载。数据处理逻辑则自行处理。
+
+```js
+ <IFunLazySelect
+  :data="data"
+  lazy
+  :load="handleLoadData"
+  :selectProps="selectProps"
+  v-model="value"
+/>
+```
+
 ## `lazy-list` 基本使用
 
 通过传入`data`, 数据类型为数组。
@@ -219,10 +233,12 @@ export default {
 
 ## API 属性一览
 
-| props       |          说明          |                              默认值 |
-| ----------- | :--------------------: | ----------------------------------: |
-| checked     |  初始值，默认选中回显  |                      非必须，string |
-| data        |       下拉数据源       |                         必传，Array |
-| selectProps | 下拉列表渲染的属性 key | 默认`{value:"value",label:"label"}` |
+| props       |                  说明                  |                              默认值 |
+| ----------- | :------------------------------------: | ----------------------------------: |
+| checked     |          初始值，默认选中回显          |                      非必须，string |
+| data        |               下拉数据源               |                         必传，Array |
+| selectProps |         下拉列表渲染的属性 key         | 默认`{value:"value",label:"label"}` |
+| lazy        | 是否远程加载，需配合`load`加载远程数据 |                        默认 `false` |
+| load        |        需配合`lazy`加载远程数据        |                          `Function` |
 
 其他`el-select` 支持的属性，事件。
