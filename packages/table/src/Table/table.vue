@@ -46,6 +46,14 @@
               :align="item.align || 'center'"
               v-bind="item"
             >
+              <template slot="header" slot-scope="scope">
+                <render-column
+                  v-if="item.headerRender"
+                  :render="item.headerRender"
+                  :scope="scope"
+                />
+                <span v-else>{{ item.label }}</span>
+              </template>
               <template slot-scope="scope">
                 <render-column
                   v-if="item.render"

@@ -1,6 +1,8 @@
 import { defineConfig } from "vite";
+import path from "path";
 // vue
 import vue2 from "@vitejs/plugin-vue2";
+import vueJsx from "@vitejs/plugin-vue2-jsx";
 
 // rollup options
 const rollupOptions = {
@@ -16,10 +18,10 @@ const rollupOptions = {
 // config vite
 
 const config = {
-  plugins: [vue2()],
+  plugins: [vue2(), vueJsx()],
   resolve: {
     alias: {
-      "@": "./src",
+      "@": path.resolve(__dirname, "src"),
     },
   },
   // 库模式，编译打包

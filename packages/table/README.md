@@ -381,6 +381,88 @@ export default {
 </script>
 ```
 
+## 自定义表头
+
+通过`tableOptions.columns.[column].headerRender` 自定义表头
+
+```vue
+<script lang="jsx">
+export default {
+  data() {
+    return {
+      checkedAll: false,
+      tableOptions: {
+        data: [],
+        columns: [],
+      },
+      pageOptions: {
+        total: 100,
+        pageSize: 10,
+        pageNum: 1,
+        background: true,
+        layout: "total,sizes, prev, pager, next, jumper",
+      },
+    };
+  },
+  mounted() {
+    let $this = this;
+    this.tableOptions.columns = [
+      {
+        prop: "id",
+        label: "id",
+      },
+      {
+        prop: "name",
+        label: "名称",
+        nested: true,
+        columns: [
+          {
+            prop: "firstName",
+            label: "姓氏",
+          },
+          {
+            prop: "lastName",
+            label: "名",
+            headerRender(h, row, column, index) {
+              return (
+                <div>
+                  <span>{column.label}</span>
+                  <el-tag>hot</el-tag>
+                </div>
+              );
+            },
+          },
+        ],
+      },
+      {
+        prop: "age",
+        label: "年龄",
+      },
+      {
+        prop: "address",
+        label: "地址",
+      },
+      {
+        prop: "operate",
+        label: "操作",
+        render(h, row) {
+          return <el-checkbox vModel={row.checked} />;
+        },
+        headerRender(h, row, column, index) {
+          return (
+            <el-checkbox
+              vModel={$this.checkedAll}
+              onChange={() => $this.checkedAllData()}
+            />
+          );
+        },
+      },
+    ];
+  },
+};
+</script>
+```
+
 ## API 属性一览
 
 | props          |               说明               |                 默认值 |
@@ -410,6 +492,19 @@ export default {
 | total    |        数据总数，必须         |        |
 | pageSize | 分页 size，一页可展示的数据量 |        |
 | pageNum  |      页码，当前是第几页       |        |
+
+## `tableOptions.columns`
+
+定义表格列项数据，自定义渲染列、自定义渲染表头、潜逃表格
+
+| props               |             说明             |                       默认值 |
+| ------------------- | :--------------------------: | ---------------------------: |
+| prop ｜列项数据键值 |                              |
+| label               |           列项名称           |                              |
+| nested              |          是否嵌套列          |                      boolean |
+| columns             | 嵌套列时，定义潜逃的子列数据 |                              |
+| render              |       自定义列渲染函数       | Function(h,row,column,index) |
+| headerRender        |         自定义列表头         | Function(h,row,column,index) |
 
 ## `slot`
 

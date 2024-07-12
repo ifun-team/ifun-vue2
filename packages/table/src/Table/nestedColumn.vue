@@ -15,6 +15,14 @@
         :align="info.align || 'center'"
         v-bind="info"
       >
+        <template slot="header" slot-scope="scope">
+          <render-column
+            v-if="info.headerRender"
+            :render="info.headerRender"
+            :scope="scope"
+          />
+          <span v-else>{{ info.label }}</span>
+        </template>
         <template slot-scope="scope">
           <render-column
             v-if="info.render"
