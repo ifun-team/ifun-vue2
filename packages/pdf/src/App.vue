@@ -7,7 +7,7 @@
   </div>
 </template>
 <script>
-import pdfUrl from "../demo/test.pdf?url";
+import pdfUrl from "../test.pdf?url";
 export default {
   data() {
     return {
