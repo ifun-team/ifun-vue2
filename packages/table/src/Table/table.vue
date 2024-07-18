@@ -33,38 +33,36 @@
               type="selection"
               v-bind="item"
             />
-            <nested-column
-              :key="item.prop"
-              :data="item"
-              v-else-if="item.nested"
-            />
-            <el-table-column
-              v-else
-              :key="item.prop"
-              :prop="item.prop"
-              :label="item.label"
-              :align="item.align || 'center'"
-              v-bind="item"
-            >
-              <template slot="header" slot-scope="scope">
-                <render-column
-                  v-if="item.headerRender"
-                  :render="item.headerRender"
-                  :scope="scope"
-                />
-                <span v-else>{{ item.label }}</span>
-              </template>
-              <template slot-scope="scope">
-                <render-column
-                  v-if="item.render"
-                  :render="item.render"
-                  :scope="scope"
-                />
-                <span v-else>{{
-                  isEmpty(scope.row[item.prop]) ? "-" : scope.row[item.prop]
-                }}</span>
-              </template>
-            </el-table-column>
+            <template v-else>
+              <nested-column :key="item.prop" :data="item" v-if="item.nested" />
+              <el-table-column
+                v-if="!item.nested"
+                :key="item.prop"
+                :prop="item.prop"
+                :label="item.label"
+                :align="item.align || 'center'"
+                v-bind="item"
+              >
+                <template slot="header" slot-scope="scope">
+                  <render-column
+                    v-if="item.headerRender"
+                    :render="item.headerRender"
+                    :scope="scope"
+                  />
+                  <span v-else>{{ item.label }}</span>
+                </template>
+                <template slot-scope="scope">
+                  <render-column
+                    v-if="item.render"
+                    :render="item.render"
+                    :scope="scope"
+                  />
+                  <span v-else>{{
+                    isEmpty(scope.row[item.prop]) ? "-" : scope.row[item.prop]
+                  }}</span>
+                </template>
+              </el-table-column>
+            </template>
           </template>
         </el-table>
       </el-col>

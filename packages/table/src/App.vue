@@ -29,19 +29,26 @@ export default {
       {
         prop: "id",
         label: "id",
+        fixed: "left",
       },
       {
         prop: "name",
         label: "名称",
         nested: true,
+        fixed: "left",
+        width: 200,
         columns: [
           {
             prop: "firstName",
             label: "姓氏",
+            fixed: "left",
+            width: 100,
           },
           {
             prop: "lastName",
             label: "名",
+            fixed: "left",
+            width: 100,
             headerRender(h, row, column, index) {
               return (
                 <div>
@@ -60,10 +67,20 @@ export default {
       {
         prop: "address",
         label: "地址",
+        minWidth: 200,
       },
+      ...Array(20)
+        .fill()
+        .map((_, index) => ({
+          prop: `attriute-${index}`,
+          label: `属性${index}`,
+          width: 100,
+        })),
       {
         prop: "operate",
         label: "操作",
+        width: 120,
+        fixed: "right",
         render(h, row) {
           return <el-checkbox vModel={row.checked} />;
         },
