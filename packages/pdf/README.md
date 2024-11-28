@@ -26,9 +26,17 @@ npm i @ifun-vue2/pdf
 ```js
 import IFunPdf from "@ifun-vue2/pdf";
 // 样式
-import "@ifun-vue2/Pdf/dist/style.css";
+import "@ifun-vue2/pdf/dist/style.css";
 // 使用
 Vue.use(IFunPdf);
+```
+
+局部注册，导入组件使用：
+
+```js
+import { IFunPdf } from "@ifun-vue2/pdf";
+// 样式
+import "@ifun-vue2/pdf/dist/style.css";
 ```
 
 ## 特点

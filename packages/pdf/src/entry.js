@@ -1,6 +1,7 @@
 // 下拉组件导出
 import Pdf from "./pdf/index.vue";
 
+export { Pdf as IFunPdf };
 // 全部导入，install 方法
 export default {
   install(app) {
