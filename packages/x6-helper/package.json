@@ -1,0 +1,33 @@
+{
+  "name": "@ifun-vue2/x6-helper",
+  "version": "1.0.0",
+  "description": "x6-helper 是对antv-x6的应用层封装，开箱即用：包括思维导图、流程图、脑图等。",
+  "main": "index.js",
+  "module": "./dist/x6-helper.esm.js",
+  "scripts": {
+    "test": "vitest",
+    "test:run": "vitest run",
+    "dev": "vite",
+    "build": "vite build"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "keywords": [
+    "ifun-vue2",
+    "ifun"
+  ],
+  "author": "hboot",
+  "homepage": "https://github.com/ifun-team/ifun-vue2/tree/main/packages/table#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ifun-team/ifun-vue2/tree/main/packages/table"
+  },
+  "bugs": {
+    "url": "https://github.com/ifun-team/ifun-vue2/issues"
+  },
+  "license": "MIT",
+  "peerDependencies": {
+    "element-ui": "^2.15.9"
+  }
+}
