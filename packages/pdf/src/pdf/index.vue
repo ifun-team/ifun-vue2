@@ -1,6 +1,7 @@
 <template>
   <div class="ifun ifun-pdf">
     <div class="pdf-container" ref="container"></div>
+    <slot></slot>
   </div>
 </template>
 <script>
@@ -38,6 +39,12 @@ export default {
     // this.initPdf();
   },
   methods: {
+    // 获取pdf容器
+    getPdf() {
+      return {
+        root: this.$refs.container,
+      };
+    },
     clear() {
       this.$refs.container.innerHTML = "";
     },
@@ -83,15 +90,4 @@ export default {
   },
 };
 </script>
-<style lang="less" scoped>
-.ifun.ifun-pdf {
-  width: 100%;
-  height: 100%;
-  .pdf-container {
-    width: 100%;
-    height: 100%;
-    overflow: auto;
-    text-align: center;
-  }
-}
-</style>
+<style lang="less" scoped></style>
