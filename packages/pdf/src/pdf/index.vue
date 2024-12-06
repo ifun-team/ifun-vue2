@@ -38,8 +38,12 @@ export default {
     // this.initPdf();
   },
   methods: {
+    clear() {
+      this.$refs.container.innerHTML = "";
+    },
     async initPdf() {
       if (!this.options.url && !this.options.data) {
+        this.clear();
         return;
       }
       const container = this.$refs.container;

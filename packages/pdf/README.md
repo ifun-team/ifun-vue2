@@ -43,9 +43,9 @@ import "@ifun-vue2/pdf/dist/style.css";
 
 - 实现 pdf 文件的预览
 
-## 基本使用，数据滚动
+### 文件地址`url`
 
-通过传入`data`, 数据类型为数组。
+保证文件url可被访问。地址同源
 
 ```vue
 <template>
@@ -67,6 +67,40 @@ export default {
 </script>
 ```
 
+### 二进制数据`blob`\ `base64` \ `ArrayBuffer`
+
+通过`data` 属性传入二进制数据
+
+```vue
+<script>
+export default {
+  data() {
+    return {
+      options: {
+        data: "",
+      },
+    };
+  },
+  mounted() {
+    
+  },
+  methods: {
+    getPdf() {
+      // 文件加载逻辑
+      // ... 
+
+      const fileReader = new FileReader();
+
+      fileReader.onload = (event) => {
+        let blobData = event.target.result;
+        this.options.data = blobData;
+      };
+      fileReader.readAsArrayBuffer(res.data);
+    }
+};
+</script>
+````
+
 ## API 属性一览
 
 | props   | 说明                                        | 默认值 |
@@ -79,4 +113,4 @@ export default {
 | ------- | ------------------------------------------------------------ | ------ |
 | url     | `String`pdf 文档地址，需要同源                               |        |
 | data    | `TypedArray\|ArrayBuffer`,二进制数据、base64（需要`atob()`） |        |
-| 其他... |                                                              |        |
+| 其他... | 其他可设置参数通pdfjs API参数  |        |
