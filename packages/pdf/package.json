@@ -1,6 +1,6 @@
 {
   "name": "@ifun-vue2/pdf",
-  "version": "0.2.2",
+  "version": "0.3.0",
   "description": "pdfjs-dist封装的vu2组件，pdf文件预览",
   "main": "index.js",
   "module": "./dist/pdf.esm.js",

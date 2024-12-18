@@ -101,11 +101,22 @@ export default {
 </script>
 ````
 
+### 设置页面缩放`scale`，提高分辨率
+
+```vue
+<template>
+  <div>
+    <IFunPdf :options="options" :viewportOptions="{ scale: 5 }" />
+  </div>
+</template>
+````
+
 ## API 属性一览
 
 | props   | 说明                                        | 默认值 |
 | ------- | ------------------------------------------- | ------ |
 | options | 初始化文档对象，同 API`getDocument`参数一致 |        |
+|viewportOptions|pdf页面视口配置,同 API `getViewport`参数一致|默认`{scale: 1}`|
 
 ## `options`
 
@@ -113,4 +124,14 @@ export default {
 | ------- | ------------------------------------------------------------ | ------ |
 | url     | `String`pdf 文档地址，需要同源                               |        |
 | data    | `TypedArray\|ArrayBuffer`,二进制数据、base64（需要`atob()`） |        |
-| 其他... | 其他可设置参数通pdfjs API参数  |        |
+| ... | 其他可设置参数通pdfjs API参数  |        |
+
+## `viewportOptions`
+
+| props   | 说明                                                         | 默认值 |
+| ------- | ------------------------------------------------------------ | ------ |
+|scale|缩放比例|可调节获得高分辨率的图像,默认 `1`|
+|rotation|页面旋转角度|默认 `0`|
+|offsetX|页面水平偏移量|默认 `0`|
+|offsetY|页面垂直偏移量|默认 `0`|
+|...|||

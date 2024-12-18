@@ -2,7 +2,7 @@
   <div class="example">
     <div class="example-item">
       <p>1. 基础使用</p>
-      <IFunPdf :options="options" />
+      <IFunPdf :options="options" :viewportOptions="{ scale: 5 }" />
     </div>
   </div>
 </template>
