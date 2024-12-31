@@ -25,6 +25,9 @@ __tests__
 # doc
 docs
 
-./vite.config.js
-./index.html
-demo
+vite.config.js
+index.html
+demo/
+test.pdf
+src/App.vue
+src/index.js

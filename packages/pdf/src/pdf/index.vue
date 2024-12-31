@@ -43,10 +43,23 @@ export default {
     // this.initPdf();
   },
   methods: {
+    getCanvas(index) {
+      const page = this.$refs.container.children[index];
+      if (!page) return;
+
+      return page.querySelector("canvas");
+    },
     // 获取pdf容器
     getPdf() {
       return {
         root: this.$refs.container,
+        totalPages: this.totalPages,
+        clear: () => {
+          this.clear();
+        },
+        getCanvas: (index) => {
+          return this.getCanvas(index);
+        },
       };
     },
     clear() {
@@ -57,7 +70,8 @@ export default {
         this.clear();
         return;
       }
-      const container = this.$refs.container;
+
+      const fragment = document.createDocumentFragment();
       try {
         this.loading = true;
         this.$emit("ready");
@@ -77,6 +91,9 @@ export default {
 
           const { scale } = this.viewportOptions;
           canvas.style = `transform:scale(${1 / scale});transform-origin:0 0;`;
+          // 设置width和height
+          const scaleWidth = (viewport.width * 1) / scale;
+          const scaleHeight = (viewport.height * 1) / scale;
 
           const context = canvas.getContext("2d");
 
@@ -86,8 +103,18 @@ export default {
           });
 
           // 将页面追加到dom
-          container.appendChild(canvas);
+          const div = document.createElement("div");
+          div.appendChild(canvas);
+          div.style.width = `${scaleWidth}px`;
+          div.style.height = `${scaleHeight}px`;
+          div.style.overflow = "hidden";
+          fragment.appendChild(div);
         }
+
+        // 添加到页面中
+        const container = this.$refs.container;
+        container.appendChild(fragment);
+
         this.$emit("finish", { total: this.totalPages });
       } catch (err) {
         console.error(err);

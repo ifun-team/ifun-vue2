@@ -2,7 +2,12 @@
   <div class="example">
     <div class="example-item">
       <p>1. 基础使用</p>
-      <IFunPdf :options="options" :viewportOptions="{ scale: 5 }" />
+      <IFunPdf
+        ref="pdf"
+        :options="options"
+        :viewportOptions="{ scale: 5 }"
+        @finish="loadedPdf"
+      />
     </div>
   </div>
 </template>
@@ -17,6 +22,13 @@ export default {
     };
   },
   mounted() {},
+  methods: {
+    loadedPdf() {
+      const { getCanvas } = this.$refs.pdf.getPdf();
+
+      console.log(getCanvas(0));
+    },
+  },
 };
 </script>
 <style lang="less" scoped>
