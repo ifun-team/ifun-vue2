@@ -21,10 +21,17 @@ export default {
       type: Object,
       default: () => ({ scale: 1 }),
     },
+    // 是否自动适应屏幕大小，默认不开启
+    fitView: {
+      type: Boolean,
+      default: false,
+    },
   },
   data() {
     return {
+      // 总页码
       totalPages: 0,
+      // 是否正在加载pdf文件
       loading: false,
     };
   },
@@ -79,6 +86,9 @@ export default {
           ...this.options,
         }).promise;
         this.totalPages = doc.numPages;
+
+        const container = this.$refs.container;
+        const { width } = container.getBoundingClientRect();
         // 读取每一页
         for (let i = 0; i < this.totalPages; i++) {
           const page = await doc.getPage(i + 1);
@@ -90,10 +100,26 @@ export default {
           // 根据视口大小缩放到100%
 
           const { scale } = this.viewportOptions;
-          canvas.style = `transform:scale(${1 / scale});transform-origin:0 0;`;
-          // 设置width和height
-          const scaleWidth = (viewport.width * 1) / scale;
-          const scaleHeight = (viewport.height * 1) / scale;
+          // 缩放比例、正常大小
+          let ratio = 1 / scale;
+          // 正常比例的页面大小
+          let scaleWidth = (viewport.width * 1) / scale;
+          let scaleHeight = (viewport.height * 1) / scale;
+          // 如果要是配屏幕大小
+
+          if (this.fitView) {
+            let fitViewRatio = width / scaleWidth;
+            // + 偏移量
+            if (
+              (fitViewRatio < 1 && fitViewRatio < 0.95) ||
+              (fitViewRatio > 1 && fitViewRatio > 1.05)
+            ) {
+              ratio = ratio * fitViewRatio;
+              scaleWidth = scaleWidth * fitViewRatio;
+              scaleHeight = scaleHeight * fitViewRatio;
+            }
+          }
+          canvas.style = `transform:scale(${ratio});transform-origin:0 0;`;
 
           const context = canvas.getContext("2d");
 
@@ -108,14 +134,13 @@ export default {
           div.style.width = `${scaleWidth}px`;
           div.style.height = `${scaleHeight}px`;
           div.style.overflow = "hidden";
+          //
           fragment.appendChild(div);
         }
-
         // 添加到页面中
-        const container = this.$refs.container;
         container.appendChild(fragment);
 
-        this.$emit("finish", { total: this.totalPages });
+        this.$emit("finish", this.getPdf());
       } catch (err) {
         console.error(err);
       } finally {
@@ -125,3 +150,12 @@ export default {
   },
 };
 </script>
+<style lang="less" scoped>
+.ifun.ifun-pdf {
+  .pdf-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+}
+</style>

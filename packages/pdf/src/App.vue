@@ -6,6 +6,7 @@
         ref="pdf"
         :options="options"
         :viewportOptions="{ scale: 5 }"
+        :fitView="true"
         @finish="loadedPdf"
       />
     </div>

@@ -15,6 +15,12 @@
 <br />
 <p>pdf文件预览.</p>
 
+## 特点
+
+* 支持URL、Blob、Base64、ArrayBuffer等格式的PDF文件预览
+* 支持设定缩放比例获得更高的清晰度
+* 支持设置适配容器大小
+
 ## 安装
 
 ```sh
@@ -39,9 +45,7 @@ import { IFunPdf } from "@ifun-vue2/pdf";
 import "@ifun-vue2/pdf/dist/style.css";
 ```
 
-## 特点
-
-- 实现 pdf 文件的预览
+## 预览数据类型
 
 ### 文件地址`url`
 
@@ -101,7 +105,9 @@ export default {
 </script>
 ````
 
-### 设置页面缩放`scale`，提高分辨率
+## 设置页面缩放`scale`，提高分辨率
+
+设置合适的缩放比例额，可以获得高分辨率的图像。
 
 ```vue
 <template>
@@ -117,6 +123,7 @@ export default {
 | ------- | ------------------------------------------- | ------ |
 | options | 初始化文档对象，同 API`getDocument`参数一致 |        |
 |viewportOptions|pdf页面视口配置,同 API `getViewport`参数一致|默认`{scale: 1}`|
+|fitView|设置渲染是否适配容器大小|默认`false`，默认为pdf原始大小 |
 
 ## `options`
 
