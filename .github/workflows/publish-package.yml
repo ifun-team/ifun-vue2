@@ -10,10 +10,10 @@ jobs:
       - uses: actions/checkout@v3
       - uses: actions/setup-node@v3
         with:
-          node-version: 16
+          node-version: 20
       - uses: pnpm/action-setup@v2.1.0
         with:
-          version: 7.2.1
+          version: 8
       - name: install dependencies
         run: pnpm install
       # 优先编译完工具包
@@ -21,7 +21,7 @@ jobs:
         run: cd packages/utils && pnpm install
       - name: utils build
         run: cd packages/utils && pnpm build
-      - uses: JS-DevTools/npm-publish@v1
+      - uses: JS-DevTools/npm-publish@v3
         with:
           token: ${{ secrets.NPM_AUTH_TOKEN }}
           package: ./packages/utils/package.json
@@ -31,7 +31,7 @@ jobs:
         run: cd packages/lazy-load && pnpm install
       - name: publish-layz-load build
         run: cd packages/lazy-load && pnpm build
-      - uses: JS-DevTools/npm-publish@v1
+      - uses: JS-DevTools/npm-publish@v3
         with:
           token: ${{ secrets.NPM_AUTH_TOKEN }}
           package: ./packages/lazy-load/package.json
@@ -40,7 +40,7 @@ jobs:
         run: cd packages/seamless-scroll && pnpm install
       - name: publish-seamless-scroll build
         run: cd packages/seamless-scroll && pnpm build
-      - uses: JS-DevTools/npm-publish@v1
+      - uses: JS-DevTools/npm-publish@v3
         with:
           token: ${{ secrets.NPM_AUTH_TOKEN }}
           package: ./packages/seamless-scroll/package.json
@@ -49,7 +49,7 @@ jobs:
         run: cd packages/table && pnpm install
       - name: publish-table build
         run: cd packages/table && pnpm build
-      - uses: JS-DevTools/npm-publish@v1
+      - uses: JS-DevTools/npm-publish@v3
         with:
           token: ${{ secrets.NPM_AUTH_TOKEN }}
           package: ./packages/table/package.json
@@ -58,7 +58,7 @@ jobs:
         run: cd packages/pdf && pnpm install
       - name: publish-pdf build
         run: cd packages/pdf && pnpm build
-      - uses: JS-DevTools/npm-publish@v1
+      - uses: JS-DevTools/npm-publish@v3
         with:
           token: ${{ secrets.NPM_AUTH_TOKEN }}
           package: ./packages/pdf/package.json
