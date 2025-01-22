@@ -2,7 +2,11 @@
   <div>
     <h2>基本使用</h2>
     <h3>基本使用、多级表头、分页、自定义表头</h3>
-    <IFunTable :tableOptions="tableOptions" :pageOptions="pageOptions" />
+    <IFunTable :tableOptions="tableOptions" :pageOptions="pageOptions">
+      <div slot="header">
+        <span>hello world</span>
+      </div>
+    </IFunTable>
   </div>
 </template>
 <script lang="jsx">

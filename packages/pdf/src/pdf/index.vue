@@ -108,7 +108,7 @@ export default {
           // 如果要是配屏幕大小
 
           if (this.fitView) {
-            let fitViewRatio = width / scaleWidth;
+            const fitViewRatio = width / scaleWidth;
             // + 偏移量
             if (
               (fitViewRatio < 1 && fitViewRatio < 0.95) ||
