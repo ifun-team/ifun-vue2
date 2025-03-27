@@ -1,6 +1,6 @@
 {
   "name": "@ifun-vue2/table",
-  "version": "1.1.1",
+  "version": "1.1.2",
   "description": "数据列表展示、封装了el-table以及el-pagination包含了分页，支持JSX语法",
   "main": "index.js",
   "module": "./dist/table.esm.js",

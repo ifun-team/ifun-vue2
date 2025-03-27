@@ -61,15 +61,16 @@
         </template>
       </template>
     </el-table>
-
-    <el-pagination
-      :total="pageOptions.total"
-      :page-size="pageOptions.pageSize"
-      @size-change="handlePageChange({ pageSize: $event })"
-      @current-change="handlePageChange({ pageNum: $event })"
-      :current-page="pageOptions.pageNum"
-      v-bind="pageOptions"
-    />
+    <template v-if="showPagination">
+      <el-pagination
+        :total="pageOptions.total"
+        :page-size="pageOptions.pageSize"
+        @size-change="handlePageChange({ pageSize: $event })"
+        @current-change="handlePageChange({ pageNum: $event })"
+        :current-page="pageOptions.pageNum"
+        v-bind="pageOptions"
+      />
+    </template>
   </div>
 </template>
 <script>
