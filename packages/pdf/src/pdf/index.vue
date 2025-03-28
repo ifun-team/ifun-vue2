@@ -143,6 +143,7 @@ export default {
         this.$emit("finish", this.getPdf());
       } catch (err) {
         console.error(err);
+        this.$emit("error", err);
       } finally {
         this.loading = false;
       }

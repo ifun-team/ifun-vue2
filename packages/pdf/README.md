@@ -101,9 +101,27 @@ export default {
       };
       fileReader.readAsArrayBuffer(res.data);
     }
+  }
 };
 </script>
 ````
+
+在传入`base64`数据时，需要通过`atob`将`base64`数据转化为`blob`数据。
+
+```vue
+<script>
+export default {
+  methods: {
+    getPdf() {
+      // 文件加载逻辑
+      // ... 
+      this.options.data = atob(res.data);
+    }
+  }
+}
+</script>
+
+```
 
 ## 设置页面缩放`scale`，提高分辨率
 
@@ -125,7 +143,7 @@ export default {
 |viewportOptions|pdf页面视口配置,同 API `getViewport`参数一致|默认`{scale: 1}`|
 |fitView|设置渲染是否适配容器大小|默认`false`，默认为pdf原始大小 |
 
-## `options`
+### `options`
 
 | props   | 说明                                                         | 默认值 |
 | ------- | ------------------------------------------------------------ | ------ |
@@ -133,7 +151,7 @@ export default {
 | data    | `TypedArray\|ArrayBuffer`,二进制数据、base64（需要`atob()`） |        |
 | ... | 其他可设置参数通pdfjs API参数  |        |
 
-## `viewportOptions`
+### `viewportOptions`
 
 | props   | 说明                                                         | 默认值 |
 | ------- | ------------------------------------------------------------ | ------ |
@@ -142,3 +160,11 @@ export default {
 |offsetX|页面水平偏移量|默认 `0`|
 |offsetY|页面垂直偏移量|默认 `0`|
 |...|||
+
+## 监听事件
+
+| 事件名 | 说明                                                         |
+| ------ | ------------------------------------------------------------ |
+| finish   | pdf文档加载完成，返回对象，包括 - `root`:pdf页面父节点；`totalPages`pdf总页数；clear：清空渲染；getCanvas：获取到pdf的某一页                         |
+| error  | pdf文档加载失败，返回错误信息                                 |
+| ready  | 准备加载pdf文档                 |
