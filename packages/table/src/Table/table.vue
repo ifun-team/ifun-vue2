@@ -1,6 +1,6 @@
 <template>
   <div class="ifun-table" v-loading="loading">
-    <div class="header-tools">
+    <div class="header-tools" v-if="$slots.header">
       <slot name="header"></slot>
     </div>
     <el-table
