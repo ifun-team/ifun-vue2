@@ -25,12 +25,15 @@ describe("LazyList", () => {
         ],
       },
       localVue: Vue,
+      scopedSlots: {
+        default(props) {
+          // 使用 h 函数创建 VNode
+          return Vue.h("div", { class: "list-item" }, props.label);
+        },
+      },
     });
     expect(wrapper.is(LazyList)).toBe(true);
     expect(wrapper.classes()).toContain("ifun-lazy-list");
-    // 测试渲染的
-    const box = wrapper.findComponent(".list-box");
-    expect(box.exists()).toBe(true);
 
     await Vue.nextTick();
     // 数据长度

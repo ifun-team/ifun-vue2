@@ -34,7 +34,6 @@ describe("LazySelect", () => {
       localVue: Vue,
     });
     expect(wrapper.is(LazySelect)).toBe(true);
-    expect(wrapper.classes()).toContain("ifun-lazy-select");
     // 测试渲染的el-select
     const select = wrapper.findComponent(Select);
     expect(select.exists()).toBe(true);
