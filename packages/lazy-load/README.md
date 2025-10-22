@@ -14,7 +14,7 @@
     </a>
 
 <br />
-<p>数据懒加载，包含了自定指令`v-lazy-load`,通过指令结合`el-select`实现下拉数据的懒加载。</p>
+<p>数据懒加载，包含了自定义指令`v-lazy-load`,通过指令结合`el-select`实现下拉数据的懒加载。</p>
 
 ## 安装
 
@@ -30,14 +30,12 @@ npm i @ifun-vue2/lazy-load
 
 ```js
 import IFunLazyLoad from "@ifun-vue2/lazy-load";
-// 样式加载
-import "@ifun-vue2/lazy-load/dist/style.css";
 
 // 使用
 Vue.use(IFunLazyLoad);
 ```
 
-**组件完全支持所有的`el-select` 属性。比如`clearable`, 但是懒加载可能会对其他使用场景有一些限制，测试不能完全**
+**组件完全支持所有的`el-select` 属性。比如`clearable`, 但是懒加载可能会对其他使用场景有一些限制，测试不能完全,欢迎提issue**
 
 ## `lazy-select` 基本使用
 
@@ -68,7 +66,7 @@ export default {
 </script>
 ```
 
-## 自定义下拉渲染`props`
+### 自定义下拉渲染`props`
 
 使用`selectProps` 来定义下拉渲染定义的 value、label 值
 
@@ -101,7 +99,7 @@ export default {
 </script>
 ```
 
-## 结合`el-form`实现组件校验。
+### 结合`el-form`实现组件校验
 
 `v-model`数据绑定。通过 el-form `rules`进行数据校验。
 
@@ -147,7 +145,7 @@ export default {
 </script>
 ```
 
-## 实现默认值选中
+### 实现默认值选中
 
 由于是懒加载数据，默认初始值可能由于没有被渲染，而导致不能展示出名称。通过定义属性处理默认值。
 
@@ -189,7 +187,7 @@ export default {
 
 `checked` 支持 select 的多选操作。字符串或者数组；选中默认值
 
-## 通过`lazy`设置是否分页加载数据
+### 通过`lazy`设置是否分页加载数据
 
 分页加载数据时，通过绑定外部加载函数`load`处理分页加载。数据处理逻辑则自行处理。
 
@@ -203,14 +201,30 @@ export default {
 />
 ```
 
+### API 属性一览
+
+| props       |                  说明                  |                              默认值 |
+| ----------- | :------------------------------------: | ----------------------------------: |
+| checked     |          初始值，默认选中回显          |                      非必须，string |
+| data        |               下拉数据源               |                         必传，Array |
+| selectProps |         下拉列表渲染的属性 key         | 默认`{value:"value",label:"label"}` |
+| lazy        | 是否远程加载，需配合`load`加载远程数据 |                        默认 `false` |
+| load        |        需配合`lazy`加载远程数据        |                          `Function` |
+
+其他`el-select` 支持的属性，事件。
+
 ## `lazy-list` 基本使用
 
-通过传入`data`, 数据类型为数组。
+通过传入`data`, 数据类型为数组。通过`slot`自定义渲染。
 
 ```vue
 <template>
   <div style="margin-bottom:20px;height:150px;">
-    <IFunLazyList :data="data" />
+    <IFunLazyList :data="data">
+      <template #default="item">
+        <div>{{ item.label }}</div>
+      </template>
+    </IFunLazyList>
   </div>
 </template>
 
@@ -231,14 +245,56 @@ export default {
 </script>
 ```
 
-## API 属性一览
+### API 属性一览
 
 | props       |                  说明                  |                              默认值 |
 | ----------- | :------------------------------------: | ----------------------------------: |
-| checked     |          初始值，默认选中回显          |                      非必须，string |
 | data        |               下拉数据源               |                         必传，Array |
-| selectProps |         下拉列表渲染的属性 key         | 默认`{value:"value",label:"label"}` |
+|size|默认加载数据的数量,非远程加载时有效||
 | lazy        | 是否远程加载，需配合`load`加载远程数据 |                        默认 `false` |
 | load        |        需配合`lazy`加载远程数据        |                          `Function` |
 
-其他`el-select` 支持的属性，事件。
+| slot       |                  说明                  |                              默认值 |
+| ----------- | :------------------------------------: | ----------------------------------: |
+|default| 默认插槽，自定义渲染，暴露单项数据||
+
+## `v-lazy-load` 指令使用
+
+`v-lazy-load`指令用于懒加载数据
+
+```vue
+<template>
+  <div class="ifun-lazy-list" v-lazy-load="lazyOption">
+    <template v-for="item in viewData">
+      <slot v-bind="item"></slot>
+    </template>
+  </div>
+</template>
+<script>
+export default {
+  data() {
+    return {
+      data: [],
+      lazyOption: {
+        loadData: $this.loadData,
+        distance: 20,
+        callback: (fn) => {
+          // 这里是在组件销毁前, 移除监听事件.
+          $this.$once("hook:beforeDestroy", () => fn());
+        },
+      },
+    };
+  },
+  
+};
+</script>
+```
+
+### 属性一览
+
+| props       |                  说明                  |                              默认值 |
+| ----------- | :------------------------------------: | ----------------------------------: |
+| loadData        |              懒加载数据方法              |                         Function |
+| distance        | 懒加载滚动触发加载距离底部距离， |                        默认20 |
+| callback        |        执行销毁逻辑的回掉函数，正常使用方法如示例所示，组件销毁时移除DOM监听        |                          `Function` |
+|scrollBody|  滚动容器元素，默认取当前指令绑定元素，可自定义||

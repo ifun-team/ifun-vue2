@@ -1,15 +1,8 @@
 <template>
   <div class="ifun-lazy-list" v-lazy-load="lazyOption">
-    <ul class="list-box" ref="box">
-      <li
-        class="list-item"
-        v-for="(item, index) in viewData"
-        :key="item[options.value] || index"
-      >
-        <slot v-if="$attrs.params" :params="item"></slot>
-        <span v-else>{{ item[options.label] || item }}</span>
-      </li>
-    </ul>
+    <template v-for="item in viewData">
+      <slot v-bind="item"></slot>
+    </template>
   </div>
 </template>
 <script>
@@ -27,13 +20,14 @@ export default {
       type: Number,
       default: () => 15,
     },
-    // 渲染的属性
-    options: {
-      type: Object,
-      default: () => ({
-        value: "value",
-        label: "label",
-      }),
+    // 是否进行远程加载
+    lazy: {
+      type: Boolean,
+      default: false,
+    },
+    // 分页查询时，调用外部函数
+    load: {
+      type: Function,
     },
   },
   data() {
@@ -56,13 +50,23 @@ export default {
      * 当前下拉展示的
      */
     viewData() {
+      if (this.lazy) {
+        return this.data;
+      }
       const data = this.data.slice(0, this.size * this.page);
       return data;
     },
   },
-  mounted() {},
   methods: {
     loadData() {
+      if (this.lazy) {
+        if (!this.load) {
+          console.error("懒加载`lazy`数据时，加载函数`load`必须绑定！");
+          this.load();
+        }
+        this.load();
+        return;
+      }
       if (this.size * this.page >= this.data.length) {
         return;
       }
@@ -76,19 +80,5 @@ export default {
   width: 100%;
   height: 100%;
   overflow: auto;
-  ul {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-  }
-  .list-box {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    .list-item {
-      padding: 15px 10px;
-    }
-  }
 }
 </style>

@@ -1,21 +1,19 @@
 <template>
-  <div class="ifun-lazy-select">
-    <el-select
-      v-lazy-load="lazyOption"
-      v-bind="$attrs"
-      style="width: 100%"
-      v-on="$listeners"
-      :filter-method="handleFilterData"
-      @visible-change="handleOptionVisible"
-    >
-      <el-option
-        v-for="item in viewData"
-        :key="item[selectProps.value]"
-        :value="item[selectProps.value]"
-        :label="item[selectProps.label]"
-      />
-    </el-select>
-  </div>
+  <el-select
+    v-lazy-load="lazyOption"
+    style="width: 100%"
+    :filter-method="handleFilterData"
+    @visible-change="handleOptionVisible"
+    v-bind="$attrs"
+    v-on="$listeners"
+  >
+    <el-option
+      v-for="item in viewData"
+      :key="item[selectProps.value]"
+      :value="item[selectProps.value]"
+      :label="item[selectProps.label]"
+    />
+  </el-select>
 </template>
 <script>
 import emitter from "element-ui/src/mixins/emitter";
@@ -155,7 +153,6 @@ export default {
       return data;
     },
   },
-  mounted() {},
   methods: {
     handleOptionVisible(bool) {
       if (!bool) {
@@ -187,8 +184,3 @@ export default {
   },
 };
 </script>
-<style scoped>
-.ifun-lazy-select {
-  width: 100%;
-}
-</style>

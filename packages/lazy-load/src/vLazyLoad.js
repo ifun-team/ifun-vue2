@@ -21,7 +21,7 @@ export default {
     // 获取scroll 滚动的容器元素,由参数传入
     // 如果没有传入,则默认绑定指令的元素自己
     // 获取懒加载处理函数 , 以及其他参数
-    const { loadData, distance, scrollBody, callback } = binding.value;
+    const { loadData, distance = 20, scrollBody, callback } = binding.value;
     let scrollContainer = el;
     if (scrollBody) {
       scrollContainer = el.querySelector(scrollBody) || el;
@@ -38,7 +38,8 @@ export default {
     const fn = () => {
       scrollContainer.removeEventListener("scroll", scroll);
     };
-    callback(fn);
+
+    callback && callback(fn);
   },
 };
 /**

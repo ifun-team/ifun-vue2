@@ -32,11 +32,25 @@
       :load="handleLoadData"
       @visible-change="(bool) => (visible = bool)"
     />
-    <h2>IFun-lazy-list</h2>
-    <IFunLazyList style="height: 150px" :data="data" />
 
     <h2>IFun-lazy-list</h2>
-    <IFunLazyList style="height: 150px" :data="data" />
+    <IFunLazyList style="height: 200px" :data="data">
+      <template #default="item">
+        <div>{{ item.label }}</div>
+      </template>
+    </IFunLazyList>
+
+    <h2>IFun-lazy-list 懒加载</h2>
+    <IFunLazyList
+      style="height: 200px"
+      :data="data"
+      lazy
+      :load="handleLoadData"
+    >
+      <template #default="item">
+        <div>{{ item.label }}</div>
+      </template>
+    </IFunLazyList>
   </div>
 </template>
 <script>
