@@ -13,7 +13,8 @@
   </div>
 </template>
 <script>
-import pdfUrl from "../test.pdf?url";
+// import pdfUrl from "../test.pdf?url";
+import pdfUrl from "../test+img.pdf?url";
 export default {
   data() {
     return {

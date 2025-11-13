@@ -31,3 +31,7 @@ demo/
 test.pdf
 src/App.vue
 src/index.js
+
+# test doc
+
+*.pdf
